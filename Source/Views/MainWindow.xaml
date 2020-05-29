@@ -1,0 +1,149 @@
+﻿<Window x:Class="BridgeManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BridgeManager"
+        mc:Ignorable="d"
+        Title="TournamentName - Session X" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <Menu HorizontalAlignment="Left" Height="20" Grid.ColumnSpan="1" VerticalAlignment="Stretch">
+            <MenuItem Header="Tournament">
+                <MenuItem Header="New"/>
+            </MenuItem>
+            <MenuItem Header="Session">
+                
+            </MenuItem>
+            <MenuItem Header="Section">
+                <MenuItem Name="AddSectionMenu" Header="Add a Section" Click="AddSectionMenu_Click"/>
+            </MenuItem>
+            <MenuItem Header="Movement">
+                <MenuItem Name="AddMovementMenu" Header="Add a movement" Click="AddMovementMenu_Click"/>
+            </MenuItem>
+            <MenuItem Header="Players">
+                <MenuItem Name="AddPlayer" Header="Add a player" Click="AddPlayer_Click" />
+                <MenuItem Name="AddPair" Header="Add a pair" Click="AddPair_Click"/>
+            </MenuItem>
+            <MenuItem Header="BridgeMate">
+                <MenuItem Name="SetBMFile" Header="Set BridgeMate database" Click="SetBMFile_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                    Grid.Row="1">
+            <TabItem Header="Section">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <DataGrid  Name="dgSection"
+                               ItemsSource="{Binding TournamentController.LoadedSession.Sections}"
+                               Margin="10" 
+                               Grid.RowSpan="2"
+                               AutoGenerateColumns="False" 
+                               CanUserAddRows="False">
+                            <DataGrid.Columns>
+                            <DataGridTextColumn Header="Number"  Binding="{Binding Number}"/>
+                            <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
+                                 <DataGridTextColumn Header="Movement" Binding="{Binding Movement.Name}" IsReadOnly="True"/>
+                                 <DataGridTextColumn Header="Tables" Binding="{Binding Movement.TableCount }" IsReadOnly="True"/>
+                                
+                            </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Movement" RenderTransformOrigin="0.5,0.506">
+                <Grid>
+                    <DataGrid 
+                        Name="dgMovement"
+                        ItemsSource="{Binding TournamentController.MovementController.Movements}"
+                        AutoGenerateColumns="False"
+                        Margin="10">
+                       
+                       
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                                <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
+                            <DataGridTextColumn Header="Tables" Binding="{Binding TableCount }" IsReadOnly="True"/>
+                                <DataGridTextColumn Header="Rounds" Binding="{Binding RoundCount}" IsReadOnly="True"/>
+                            </DataGrid.Columns>
+
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Players">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid Name="dgPlayers" AutoGenerateColumns="False" 
+                              Grid.RowSpan="2"
+                              ItemsSource="{Binding Players}"
+                              CellEditEnding="dgPlayers_CellEditEnding">
+                                        
+                        
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Id" Binding= "{Binding Number}">
+                            </DataGridTextColumn>
+                                <DataGridTextColumn Header="Name" Binding= "{Binding Name}"/>
+                            
+                        </DataGrid.Columns>
+                        <DataGrid.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Remove player" Click="RemovePlayer_Click"/>
+                                <MenuItem Header="Add a player" Click="AddPlayer_Click"/>
+                            </ContextMenu>
+                        </DataGrid.ContextMenu>
+                    </DataGrid>
+
+                    <DataGrid Name="dgPairs" 
+                              AutoGenerateColumns="False"
+                              Grid.RowSpan="2" 
+                              Grid.Column="1"
+                              ItemsSource="{Binding TournamentController.LoadedTournament.Pairs}">                        
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Id" Binding="{Binding Number}"/>
+
+                            <DataGridTextColumn  Header="" Binding="{Binding Player1.Number}" />
+                            <DataGridTextColumn  Header="Player 1" Binding="{Binding Player1.Name}" />
+
+                            <DataGridTextColumn  Header="" Binding="{Binding Player2.Number}" />
+                            <DataGridTextColumn  Header="Player 2" Binding="{Binding Player2.Name}" IsReadOnly="True"/>
+                           
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem Header="--">
+                <Grid/>
+            </TabItem>
+            <TabItem Header="++">
+                <Grid/>
+            </TabItem>
+        </TabControl>
+
+
+        
+        <TextBox IsReadOnly="True" Name="ConsoleTextBox" HorizontalAlignment="Stretch" Margin="10,10.291,10.309,9.655" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Stretch"/>
+    </Grid>
+</Window>

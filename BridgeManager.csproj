@@ -55,7 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Source\Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,7 +63,31 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="BMInput1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Source\ViewModel\BridgemateController.cs" />
+    <Compile Include="Source\ViewModel\DelegateController.cs" />
+    <Compile Include="Source\ViewModel\MainController.cs" />
+    <Compile Include="Source\ViewModel\MovementController.cs" />
+    <Compile Include="Source\ViewModel\PlayerController.cs" />
+    <Compile Include="Source\ViewModel\TournamentController.cs" />
+    <Compile Include="Source\IO\ConsoleOutputter.cs" />
+    <Compile Include="Source\IO\DatabaseHandler.cs" />
+    <Compile Include="Source\IO\MovementFileParser.cs" />
+    <Compile Include="Source\IO\TextFileHandler.cs" />
+    <Compile Include="Source\Model\Movement.cs" />
+    <Compile Include="Source\Model\Pair.cs" />
+    <Compile Include="Source\Model\Player.cs" />
+    <Compile Include="Source\Model\Section.cs" />
+    <Compile Include="Source\Model\Session.cs" />
+    <Compile Include="Source\Model\Team.cs" />
+    <Compile Include="Source\Model\Tournament.cs" />
+    <Compile Include="Source\Local.cs" />
+    <Compile Include="Source\Tools.cs" />
+    <Compile Include="Source\Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -86,6 +110,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="BMInput1.bws" />
+    <None Include="BMInput1DataSet.xsc">
+      <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BMInput1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BMInput1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BMInput1DataSet.xss">
+      <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,5 +130,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
