@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="BridgeManager.Source.Views.PlayersControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BridgeManager.Source.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="238*"/>
+            <ColumnDefinition Width="262*"/>
+            <ColumnDefinition Width="263*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Name="dgPlayers" AutoGenerateColumns="False" 
+                              Grid.RowSpan="2"
+                              ItemsSource="{Binding Players, 
+                                                    UpdateSourceTrigger=PropertyChanged}"
+                              SelectionMode="Single"
+                              Grid.Column="1">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Id" Binding= "{Binding Number, Mode=TwoWay}">
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Name" Binding= "{Binding Name, Mode=TwoWay}"/>
+                <DataGridTextColumn Header="Name" Binding= "{Binding Pair.Number, Mode=OneWay}"/>
+
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu DataContext="{Binding PlacementTarget.DataContext, 
+	                                               RelativeSource={RelativeSource Self}}">
+                    <MenuItem Header="Remove player" 
+                              Command="{Binding RemovePlayerCommand}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, 
+                                                         Path=PlacementTarget.SelectedItem}"/>
+                    <MenuItem Header="Add a player" 
+                              Command="{Binding AddPlayerCommand}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+
+        <DataGrid Name="dgPairs" 
+                              ItemsSource="{Binding Pairs}"
+                              AutoGenerateColumns="False"
+                              CanUserReorderColumns="False"
+                              Grid.RowSpan="2" 
+                              Grid.Column="2"
+                              Grid.ColumnSpan="2">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn  Header="Id" 
+                                                 Binding="{Binding Number}"/>
+
+                <DataGridTextColumn  Header="" 
+                                                 Binding="{Binding Player1.Number}" />
+
+                <DataGridTextColumn  Header="Player 1" 
+                                                 Binding="{Binding Player1.Name , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+
+                <DataGridTextColumn  Header="" 
+                                                 Binding="{Binding Player2.Number}" />
+
+                <DataGridTextColumn  Header="Player 2" 
+                                                 Binding="{Binding Player2.Name , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                 IsReadOnly="True"/>
+            </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Remove pair" 
+                              Command="{Binding RemovePairCommand}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, 
+                                                         Path=PlacementTarget.SelectedItem}"/>
+                    <MenuItem Header="Add a pair"
+                              Command="{Binding AddPairCommand}"/>
+
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+        </DataGrid>
+    </Grid>
+</UserControl>

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BridgeManager.Source {
 
 
-    public static class Local {
+    public static class Strings {
 
 
         private static readonly Dictionary<string, string> strings = new Dictionary<string, string>();

@@ -14,6 +14,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,9 +49,27 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>BridgeManager.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=5.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>packages\Autofac.5.2.0\lib\net461\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +88,52 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Source\IO\Database\BMInput1DataSet.cs">
+      <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="Source\IO\Database\AdapterBuilder.cs" />
+    <Compile Include="Source\IO\DialogService.cs" />
+    <Compile Include="Source\IO\SerializationService.cs" />
+    <Compile Include="Source\Tools\ContainerConfig.cs" />
+    <Compile Include="Source\Tools\Math.cs" />
+    <Compile Include="Source\IO\MovementParsing\IMovementParser.cs" />
+    <Compile Include="Source\IO\MovementParsing\Parsers\GiborgParser.cs" />
+    <Compile Include="Source\IO\Preferences.cs" />
+    <Compile Include="Source\IO\Scoring\IScorer.cs" />
+    <Compile Include="Source\Model\PlayerUnit.cs" />
+    <Compile Include="Source\Model\ProgressState.cs" />
+    <Compile Include="Source\Model\Result.cs" />
+    <Compile Include="Source\IO\Scoring\MPScorer.cs" />
+    <Compile Include="Source\Model\PartialScore.cs" />
+    <Compile Include="Source\Model\Score.cs" />
+    <Compile Include="Source\ViewModel\Commands\Command.cs" />
+    <Compile Include="Source\ViewModel\Commands\DelegateCommand.cs" />
+    <Compile Include="Source\ViewModel\Dialog\MovementSelectorWindowViewModel.cs" />
+    <Compile Include="Source\ViewModel\SectionsViewModel.cs" />
+    <Compile Include="Source\ViewModel\SessionsViewModel.cs" />
+    <Compile Include="Source\Views\BridgemateControl.xaml.cs">
+      <DependentUpon>BridgemateControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Views\Dialog\MovementSelectorWindow.xaml.cs">
+      <DependentUpon>MovementSelectorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Views\MovementsControl.xaml.cs">
+      <DependentUpon>MovementsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Views\PlayersControl.xaml.cs">
+      <DependentUpon>PlayersControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Views\SectionsControl.xaml.cs">
+      <DependentUpon>SectionsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Views\SessionsControl.xaml.cs">
+      <DependentUpon>SessionsControl.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Source\Views\BridgemateControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Source\Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,34 +142,54 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BMInput1DataSet.Designer.cs">
+    <Compile Include="Source\IO\Database\BMInput1DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Source\ViewModel\BridgemateController.cs" />
-    <Compile Include="Source\ViewModel\DelegateController.cs" />
-    <Compile Include="Source\ViewModel\MainController.cs" />
-    <Compile Include="Source\ViewModel\MovementController.cs" />
-    <Compile Include="Source\ViewModel\PlayerController.cs" />
-    <Compile Include="Source\ViewModel\TournamentController.cs" />
+    <Compile Include="Source\Component\ObservableObject.cs" />
+    <Compile Include="Source\Component\IndexedObject.cs" />
+    <Compile Include="Source\ViewModel\BridgemateViewModel.cs" />
+    <Compile Include="Source\ViewModel\ViewModelBase.cs" />
+    <Compile Include="Source\ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="Source\ViewModel\MovementsViewModel.cs" />
+    <Compile Include="Source\ViewModel\PlayersViewModel.cs" />
     <Compile Include="Source\IO\ConsoleOutputter.cs" />
-    <Compile Include="Source\IO\DatabaseHandler.cs" />
-    <Compile Include="Source\IO\MovementFileParser.cs" />
+    <Compile Include="Source\IO\Database\DatabaseService.cs" />
+    <Compile Include="Source\IO\MovementParsing\MovementFileParser.cs" />
     <Compile Include="Source\IO\TextFileHandler.cs" />
     <Compile Include="Source\Model\Movement.cs" />
     <Compile Include="Source\Model\Pair.cs" />
     <Compile Include="Source\Model\Player.cs" />
     <Compile Include="Source\Model\Section.cs" />
     <Compile Include="Source\Model\Session.cs" />
-    <Compile Include="Source\Model\Team.cs" />
     <Compile Include="Source\Model\Tournament.cs" />
-    <Compile Include="Source\Local.cs" />
-    <Compile Include="Source\Tools.cs" />
+    <Compile Include="Source\IO\Strings.cs" />
     <Compile Include="Source\Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Source\Views\Dialog\MovementSelectorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Views\MovementsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Views\PlayersControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Views\SectionsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Views\SessionsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -111,16 +210,20 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="BMInput1.bws" />
-    <None Include="BMInput1DataSet.xsc">
+    <None Include="packages.config" />
+    <None Include="Source\IO\Database\BMInput1DataSet.xsc">
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="BMInput1DataSet.xsd">
+    <None Include="Source\IO\Database\BMInput1DataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>BMInput1DataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="BMInput1DataSet.xss">
+    <None Include="Source\IO\Database\BMInput1DataSet.xss">
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -130,6 +233,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

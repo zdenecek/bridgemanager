@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BridgeManager.Source.Component;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,17 +7,16 @@ using System.Threading.Tasks;
 
 namespace BridgeManager.Source.Model
 {
-    public class Player
-    {
-        private int number;
-        private string name;
+    public class Player : PlayerUnit
+    {  
+        private Pair _pair = null;
 
-        public int Number { get => number; set => number = value; }
-        public string Name { get => name; set => name = value; }
+        public Pair Pair { get => _pair; set { _pair = value; OnPropertyChanged(); } }
 
-        public Player(int number) {
-            this.number = number;
+        public Player(int number) : base(number) {
         }
+
+        private Player() : this(0) { }
 
     }
 }

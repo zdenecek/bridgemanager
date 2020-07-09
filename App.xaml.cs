@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using BridgeManager.Source.Tools;
 
 namespace BridgeManager {
     /// <summary>
@@ -17,16 +18,15 @@ namespace BridgeManager {
         
         private void Application_Startup(object sender, StartupEventArgs e) {
 
-            Local.Initialize();
+            var container = ContainerConfig.Configure();
 
-            
-            //DatabaseHandler db = new DatabaseHandler(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\zdnek\ME\Everything\BridgeManager\BridgeManager\BMInput1.bws");
+            using(var scope = container.BeginLifetimeScope())
+            {
 
-            MainWindow wnd = new MainWindow();
-            wnd.Show();
+            }
+      
+            MainWindowViewModel mainController = new MainWindowViewModel();
 
-            Console.SetOut(new ConsoleOutputter(wnd.ConsoleTextBox));
-            Console.WriteLine("Welcome to BridgeManager v. 0.1");
         }
 
         private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e) {

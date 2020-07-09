@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace BridgeManager {
+namespace BridgeManager.Source.IO.Database {
     
     
     /// <summary>
@@ -696,6 +696,13 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ClientsRow FindByID(int ID) {
+                return ((ClientsRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 ClientsDataTable cln = ((ClientsDataTable)(base.Clone()));
                 cln.InitVars();
@@ -722,9 +729,13 @@ namespace BridgeManager {
                 base.Columns.Add(this.columnID);
                 this.columnComputer = new global::System.Data.DataColumn("Computer", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnComputer);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
                 this.columnID.AutoIncrement = true;
                 this.columnID.AutoIncrementSeed = -1;
                 this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
                 this.columnComputer.MaxLength = 255;
             }
             
@@ -1791,6 +1802,14 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public HandRecordRow FindBySectionBoard(short Section, short Board) {
+                return ((HandRecordRow)(this.Rows.Find(new object[] {
+                            Section,
+                            Board})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 HandRecordDataTable cln = ((HandRecordDataTable)(base.Clone()));
                 cln.InitVars();
@@ -1865,6 +1884,11 @@ namespace BridgeManager {
                 base.Columns.Add(this.columnWestDiamonds);
                 this.columnWestClubs = new global::System.Data.DataColumn("WestClubs", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWestClubs);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnSection,
+                                this.columnBoard}, true));
+                this.columnSection.AllowDBNull = false;
+                this.columnBoard.AllowDBNull = false;
                 this.columnNorthSpades.MaxLength = 13;
                 this.columnNorthHearts.MaxLength = 13;
                 this.columnNorthDiamonds.MaxLength = 13;
@@ -2127,6 +2151,13 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public PlayerNamesRow FindByID(int ID) {
+                return ((PlayerNamesRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 PlayerNamesDataTable cln = ((PlayerNamesDataTable)(base.Clone()));
                 cln.InitVars();
@@ -2156,6 +2187,10 @@ namespace BridgeManager {
                 base.Columns.Add(this.columnName);
                 this.columnstrID = new global::System.Data.DataColumn("strID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstrID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
                 this.columnName.MaxLength = 18;
                 this.columnstrID.MaxLength = 18;
             }
@@ -2470,6 +2505,15 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public PlayerNumbersRow FindBySection_TableDirection(short Section, short _Table, string Direction) {
+                return ((PlayerNumbersRow)(this.Rows.Find(new object[] {
+                            Section,
+                            _Table,
+                            Direction})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 PlayerNumbersDataTable cln = ((PlayerNumbersDataTable)(base.Clone()));
                 cln.InitVars();
@@ -2520,6 +2564,13 @@ namespace BridgeManager {
                 base.Columns.Add(this.columnTimeLog);
                 this.columnRound = new global::System.Data.DataColumn("Round", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRound);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnSection,
+                                this.columnTable,
+                                this.columnDirection}, true));
+                this.columnSection.AllowDBNull = false;
+                this.columnTable.AllowDBNull = false;
+                this.columnDirection.AllowDBNull = false;
                 this.columnDirection.MaxLength = 2;
                 this.columnNumber.MaxLength = 16;
                 this.columnName.MaxLength = 18;
@@ -3011,6 +3062,17 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public ReceivedDataRow FindByIDSection_TableRoundBoard(int ID, short Section, short _Table, short Round, short Board) {
+                return ((ReceivedDataRow)(this.Rows.Find(new object[] {
+                            ID,
+                            Section,
+                            _Table,
+                            Round,
+                            Board})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 ReceivedDataDataTable cln = ((ReceivedDataDataTable)(base.Clone()));
                 cln.InitVars();
@@ -3105,9 +3167,20 @@ namespace BridgeManager {
                 base.Columns.Add(this.columnExternalUpdate);
                 this.columnSuspiciousContract = new global::System.Data.DataColumn("SuspiciousContract", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSuspiciousContract);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID,
+                                this.columnSection,
+                                this.columnTable,
+                                this.columnRound,
+                                this.columnBoard}, true));
                 this.columnID.AutoIncrement = true;
                 this.columnID.AutoIncrementSeed = -1;
                 this.columnID.AutoIncrementStep = -1;
+                this.columnID.AllowDBNull = false;
+                this.columnSection.AllowDBNull = false;
+                this.columnTable.AllowDBNull = false;
+                this.columnRound.AllowDBNull = false;
+                this.columnBoard.AllowDBNull = false;
                 this._columnNS_EW.MaxLength = 2;
                 this.columnContract.MaxLength = 10;
                 this.columnResult.MaxLength = 10;
@@ -3461,6 +3534,8 @@ namespace BridgeManager {
                 base.Columns.Add(this.columnHighBoard);
                 this.columnCustomBoards = new global::System.Data.DataColumn("CustomBoards", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCustomBoards);
+                this.columnSection.AllowDBNull = false;
+                this.columnTable.AllowDBNull = false;
                 this.columnCustomBoards.MaxLength = 255;
             }
             
@@ -3763,6 +3838,13 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public SectionRow FindByID(short ID) {
+                return ((SectionRow)(this.Rows.Find(new object[] {
+                            ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 SectionDataTable cln = ((SectionDataTable)(base.Clone()));
                 cln.InitVars();
@@ -3807,6 +3889,10 @@ namespace BridgeManager {
                 base.Columns.Add(this.columnScoringType);
                 this.columnWinners = new global::System.Data.DataColumn("Winners", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnWinners);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnID}, true));
+                this.columnID.AllowDBNull = false;
+                this.columnID.Unique = true;
                 this.columnLetter.MaxLength = 2;
             }
             
@@ -4143,7 +4229,10 @@ namespace BridgeManager {
                                 this.columnID}, false));
                 this.columnID.Unique = true;
                 this.columnName.MaxLength = 40;
+                this.columnGUID.DefaultValue = ((string)("String.Empty"));
                 this.columnGUID.MaxLength = 80;
+                this.columnStatus.DefaultValue = ((short)(0));
+                this.columnShowInApp.DefaultValue = ((bool)(false));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4456,6 +4545,14 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public TablesRow FindBySection_Table(short Section, short _Table) {
+                return ((TablesRow)(this.Rows.Find(new object[] {
+                            Section,
+                            _Table})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 TablesDataTable cln = ((TablesDataTable)(base.Clone()));
                 cln.InitVars();
@@ -4506,6 +4603,16 @@ namespace BridgeManager {
                 base.Columns.Add(this.columnCurrentBoard);
                 this.columnGroup = new global::System.Data.DataColumn("Group", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGroup);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnSection,
+                                this.columnTable}, true));
+                this.columnSection.AllowDBNull = false;
+                this.columnTable.AllowDBNull = false;
+                this.columnLogOnOff.DefaultValue = ((short)(0));
+                this.columnUpdateFromRound.DefaultValue = ((short)(0));
+                this.columnCurrentRound.DefaultValue = ((short)(0));
+                this.columnCurrentBoard.DefaultValue = ((short)(0));
+                this.columnGroup.DefaultValue = ((short)(0));
                 this.ExtendedProperties.Add("Generator_TablePropName", "_Tables");
                 this.ExtendedProperties.Add("Generator_UserTableName", "Tables");
             }
@@ -4652,12 +4759,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int ID {
                 get {
-                    try {
-                        return ((int)(this[this.tableClients.IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'Clients\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableClients.IDColumn]));
                 }
                 set {
                     this[this.tableClients.IDColumn] = value;
@@ -4678,18 +4780,6 @@ namespace BridgeManager {
                 set {
                     this[this.tableClients.ComputerColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tableClients.IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetIDNull() {
-                this[this.tableClients.IDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5432,12 +5522,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short Section {
                 get {
-                    try {
-                        return ((short)(this[this.tableHandRecord.SectionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Section\' in table \'HandRecord\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableHandRecord.SectionColumn]));
                 }
                 set {
                     this[this.tableHandRecord.SectionColumn] = value;
@@ -5448,12 +5533,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short Board {
                 get {
-                    try {
-                        return ((short)(this[this.tableHandRecord.BoardColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Board\' in table \'HandRecord\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableHandRecord.BoardColumn]));
                 }
                 set {
                     this[this.tableHandRecord.BoardColumn] = value;
@@ -5718,30 +5798,6 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsSectionNull() {
-                return this.IsNull(this.tableHandRecord.SectionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetSectionNull() {
-                this[this.tableHandRecord.SectionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsBoardNull() {
-                return this.IsNull(this.tableHandRecord.BoardColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetBoardNull() {
-                this[this.tableHandRecord.BoardColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsNorthSpadesNull() {
                 return this.IsNull(this.tableHandRecord.NorthSpadesColumn);
             }
@@ -5951,12 +6007,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int ID {
                 get {
-                    try {
-                        return ((int)(this[this.tablePlayerNames.IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'PlayerNames\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tablePlayerNames.IDColumn]));
                 }
                 set {
                     this[this.tablePlayerNames.IDColumn] = value;
@@ -5993,18 +6044,6 @@ namespace BridgeManager {
                 set {
                     this[this.tablePlayerNames.strIDColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tablePlayerNames.IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetIDNull() {
-                this[this.tablePlayerNames.IDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6050,12 +6089,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short Section {
                 get {
-                    try {
-                        return ((short)(this[this.tablePlayerNumbers.SectionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Section\' in table \'PlayerNumbers\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tablePlayerNumbers.SectionColumn]));
                 }
                 set {
                     this[this.tablePlayerNumbers.SectionColumn] = value;
@@ -6066,12 +6100,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short _Table {
                 get {
-                    try {
-                        return ((short)(this[this.tablePlayerNumbers.TableColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Table\' in table \'PlayerNumbers\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tablePlayerNumbers.TableColumn]));
                 }
                 set {
                     this[this.tablePlayerNumbers.TableColumn] = value;
@@ -6082,12 +6111,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string Direction {
                 get {
-                    try {
-                        return ((string)(this[this.tablePlayerNumbers.DirectionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Direction\' in table \'PlayerNumbers\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tablePlayerNumbers.DirectionColumn]));
                 }
                 set {
                     this[this.tablePlayerNumbers.DirectionColumn] = value;
@@ -6192,42 +6216,6 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsSectionNull() {
-                return this.IsNull(this.tablePlayerNumbers.SectionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetSectionNull() {
-                this[this.tablePlayerNumbers.SectionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Is_TableNull() {
-                return this.IsNull(this.tablePlayerNumbers.TableColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Set_TableNull() {
-                this[this.tablePlayerNumbers.TableColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsDirectionNull() {
-                return this.IsNull(this.tablePlayerNumbers.DirectionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetDirectionNull() {
-                this[this.tablePlayerNumbers.DirectionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsNumberNull() {
                 return this.IsNull(this.tablePlayerNumbers.NumberColumn);
             }
@@ -6317,12 +6305,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int ID {
                 get {
-                    try {
-                        return ((int)(this[this.tableReceivedData.IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'ReceivedData\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableReceivedData.IDColumn]));
                 }
                 set {
                     this[this.tableReceivedData.IDColumn] = value;
@@ -6333,12 +6316,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short Section {
                 get {
-                    try {
-                        return ((short)(this[this.tableReceivedData.SectionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Section\' in table \'ReceivedData\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableReceivedData.SectionColumn]));
                 }
                 set {
                     this[this.tableReceivedData.SectionColumn] = value;
@@ -6349,12 +6327,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short _Table {
                 get {
-                    try {
-                        return ((short)(this[this.tableReceivedData.TableColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Table\' in table \'ReceivedData\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableReceivedData.TableColumn]));
                 }
                 set {
                     this[this.tableReceivedData.TableColumn] = value;
@@ -6365,12 +6338,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short Round {
                 get {
-                    try {
-                        return ((short)(this[this.tableReceivedData.RoundColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Round\' in table \'ReceivedData\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableReceivedData.RoundColumn]));
                 }
                 set {
                     this[this.tableReceivedData.RoundColumn] = value;
@@ -6381,12 +6349,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short Board {
                 get {
-                    try {
-                        return ((short)(this[this.tableReceivedData.BoardColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Board\' in table \'ReceivedData\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableReceivedData.BoardColumn]));
                 }
                 set {
                     this[this.tableReceivedData.BoardColumn] = value;
@@ -6683,66 +6646,6 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tableReceivedData.IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetIDNull() {
-                this[this.tableReceivedData.IDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsSectionNull() {
-                return this.IsNull(this.tableReceivedData.SectionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetSectionNull() {
-                this[this.tableReceivedData.SectionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Is_TableNull() {
-                return this.IsNull(this.tableReceivedData.TableColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Set_TableNull() {
-                this[this.tableReceivedData.TableColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsRoundNull() {
-                return this.IsNull(this.tableReceivedData.RoundColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetRoundNull() {
-                this[this.tableReceivedData.RoundColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsBoardNull() {
-                return this.IsNull(this.tableReceivedData.BoardColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetBoardNull() {
-                this[this.tableReceivedData.BoardColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsPairNSNull() {
                 return this.IsNull(this.tableReceivedData.PairNSColumn);
             }
@@ -6976,12 +6879,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short Section {
                 get {
-                    try {
-                        return ((short)(this[this.tableRoundData.SectionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Section\' in table \'RoundData\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableRoundData.SectionColumn]));
                 }
                 set {
                     this[this.tableRoundData.SectionColumn] = value;
@@ -6992,12 +6890,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short _Table {
                 get {
-                    try {
-                        return ((short)(this[this.tableRoundData.TableColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Table\' in table \'RoundData\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableRoundData.TableColumn]));
                 }
                 set {
                     this[this.tableRoundData.TableColumn] = value;
@@ -7102,30 +6995,6 @@ namespace BridgeManager {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsSectionNull() {
-                return this.IsNull(this.tableRoundData.SectionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetSectionNull() {
-                this[this.tableRoundData.SectionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Is_TableNull() {
-                return this.IsNull(this.tableRoundData.TableColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Set_TableNull() {
-                this[this.tableRoundData.TableColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsRoundNull() {
                 return this.IsNull(this.tableRoundData.RoundColumn);
             }
@@ -7215,12 +7084,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short ID {
                 get {
-                    try {
-                        return ((short)(this[this.tableSection.IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ID\' in table \'Section\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableSection.IDColumn]));
                 }
                 set {
                     this[this.tableSection.IDColumn] = value;
@@ -7337,18 +7201,6 @@ namespace BridgeManager {
                 set {
                     this[this.tableSection.WinnersColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsIDNull() {
-                return this.IsNull(this.tableSection.IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetIDNull() {
-                this[this.tableSection.IDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7665,12 +7517,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short Section {
                 get {
-                    try {
-                        return ((short)(this[this.tableTables.SectionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Section\' in table \'Tables\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableTables.SectionColumn]));
                 }
                 set {
                     this[this.tableTables.SectionColumn] = value;
@@ -7681,12 +7528,7 @@ namespace BridgeManager {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public short _Table {
                 get {
-                    try {
-                        return ((short)(this[this.tableTables.TableColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Table\' in table \'Tables\' is DBNull.", e);
-                    }
+                    return ((short)(this[this.tableTables.TableColumn]));
                 }
                 set {
                     this[this.tableTables.TableColumn] = value;
@@ -7803,30 +7645,6 @@ namespace BridgeManager {
                 set {
                     this[this.tableTables.GroupColumn] = value;
                 }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsSectionNull() {
-                return this.IsNull(this.tableTables.SectionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetSectionNull() {
-                this[this.tableTables.SectionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool Is_TableNull() {
-                return this.IsNull(this.tableTables.TableColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void Set_TableNull() {
-                this[this.tableTables.TableColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8255,7 +8073,7 @@ namespace BridgeManager {
         }
     }
 }
-namespace BridgeManager.BMInput1DataSetTableAdapters {
+namespace BridgeManager.Source.IO.Database.BMInput1DataSetTableAdapters {
     
     
     /// <summary>
@@ -10103,8 +9921,8 @@ namespace BridgeManager.BMInput1DataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
-                    global::System.Nullable<short> Section, 
-                    global::System.Nullable<short> Board, 
+                    short Section, 
+                    short Board, 
                     string NorthSpades, 
                     string NorthHearts, 
                     string NorthDiamonds, 
@@ -10121,18 +9939,8 @@ namespace BridgeManager.BMInput1DataSetTableAdapters {
                     string WestHearts, 
                     string WestDiamonds, 
                     string WestClubs) {
-            if ((Section.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((short)(Section.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((Board.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((short)(Board.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[0].Value = ((short)(Section));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((short)(Board));
             if ((NorthSpades == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
@@ -10454,13 +10262,8 @@ namespace BridgeManager.BMInput1DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<int> ID, string Name, string strID) {
-            if ((ID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
+        public virtual int Insert(int ID, string Name, string strID) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(ID));
             if ((Name == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
@@ -10712,21 +10515,11 @@ namespace BridgeManager.BMInput1DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<short> Section, global::System.Nullable<short> Table, string Direction, string Number, string Name, bool Updated, bool Processed, global::System.Nullable<global::System.DateTime> TimeLog, global::System.Nullable<short> Round) {
-            if ((Section.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((short)(Section.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((Table.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((short)(Table.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+        public virtual int Insert(short Section, short Table, string Direction, string Number, string Name, bool Updated, bool Processed, global::System.Nullable<global::System.DateTime> TimeLog, global::System.Nullable<short> Round) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((short)(Section));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((short)(Table));
             if ((Direction == null)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Direction");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Direction));
@@ -11025,10 +10818,10 @@ namespace BridgeManager.BMInput1DataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
         public virtual int Insert(
-                    global::System.Nullable<short> Section, 
-                    global::System.Nullable<short> Table, 
-                    global::System.Nullable<short> Round, 
-                    global::System.Nullable<short> Board, 
+                    short Section, 
+                    short Table, 
+                    short Round, 
+                    short Board, 
                     global::System.Nullable<short> PairNS, 
                     global::System.Nullable<short> PairEW, 
                     global::System.Nullable<short> Declarer, 
@@ -11047,30 +10840,10 @@ namespace BridgeManager.BMInput1DataSetTableAdapters {
                     bool Erased, 
                     bool ExternalUpdate, 
                     global::System.Nullable<short> SuspiciousContract) {
-            if ((Section.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((short)(Section.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((Table.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((short)(Table.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
-            if ((Round.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((short)(Round.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
-            }
-            if ((Board.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((short)(Board.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.InsertCommand.Parameters[0].Value = ((short)(Section));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((short)(Table));
+            this.Adapter.InsertCommand.Parameters[2].Value = ((short)(Round));
+            this.Adapter.InsertCommand.Parameters[3].Value = ((short)(Board));
             if ((PairNS.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[4].Value = ((short)(PairNS.Value));
             }
@@ -11381,19 +11154,9 @@ namespace BridgeManager.BMInput1DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<short> Section, global::System.Nullable<short> Table, global::System.Nullable<short> Round, global::System.Nullable<short> NSPair, global::System.Nullable<short> EWPair, global::System.Nullable<short> LowBoard, global::System.Nullable<short> HighBoard, string CustomBoards) {
-            if ((Section.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((short)(Section.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((Table.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((short)(Table.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+        public virtual int Insert(short Section, short Table, global::System.Nullable<short> Round, global::System.Nullable<short> NSPair, global::System.Nullable<short> EWPair, global::System.Nullable<short> LowBoard, global::System.Nullable<short> HighBoard, string CustomBoards) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((short)(Section));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((short)(Table));
             if ((Round.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((short)(Round.Value));
             }
@@ -11667,13 +11430,8 @@ namespace BridgeManager.BMInput1DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<short> ID, string Letter, global::System.Nullable<short> Tables, global::System.Nullable<short> MissingPair, global::System.Nullable<short> EWMoveBeforePlay, global::System.Nullable<short> Session, global::System.Nullable<short> ScoringType, global::System.Nullable<short> Winners) {
-            if ((ID.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((short)(ID.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
+        public virtual int Insert(short ID, string Letter, global::System.Nullable<short> Tables, global::System.Nullable<short> MissingPair, global::System.Nullable<short> EWMoveBeforePlay, global::System.Nullable<short> Session, global::System.Nullable<short> ScoringType, global::System.Nullable<short> Winners) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((short)(ID));
             if ((Letter == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
@@ -12228,19 +11986,9 @@ namespace BridgeManager.BMInput1DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(global::System.Nullable<short> Section, global::System.Nullable<short> Table, global::System.Nullable<short> ComputerID, global::System.Nullable<short> Status, global::System.Nullable<short> LogOnOff, global::System.Nullable<short> UpdateFromRound, global::System.Nullable<short> CurrentRound, global::System.Nullable<short> CurrentBoard, global::System.Nullable<short> Group) {
-            if ((Section.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((short)(Section.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((Table.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((short)(Table.Value));
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+        public virtual int Insert(short Section, short Table, global::System.Nullable<short> ComputerID, global::System.Nullable<short> Status, global::System.Nullable<short> LogOnOff, global::System.Nullable<short> UpdateFromRound, global::System.Nullable<short> CurrentRound, global::System.Nullable<short> CurrentBoard, global::System.Nullable<short> Group) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((short)(Section));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((short)(Table));
             if ((ComputerID.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = ((short)(ComputerID.Value));
             }

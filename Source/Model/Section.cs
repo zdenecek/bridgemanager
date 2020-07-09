@@ -1,27 +1,33 @@
-﻿using System;
+﻿using BridgeManager.Source.Component;
+using BridgeManager.Source.Model.Scoring;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
+using System.Xml.Serialization;
 
 namespace BridgeManager.Source.Model
 {
-    public class Section
-    {
-        private int number;
-        private char name;
-        private Dictionary<int, int> playerMatrix;
+    public class Section : IndexedObject {
+
+        private List<Tuple<int, int>> playerMatrix;
         private Movement movement;
+        private int boardsShift;
+        private object playersShift;
 
-        public char Name { get => name; set => name = value; }
-        public Movement Movement { get => movement; set => movement = value; }     
-        public Dictionary<int, int> PlayerMatrix { get => playerMatrix; set => playerMatrix = value; }
-        public int Number { get => number; set => number = value; }
+        public Movement Movement { get => movement; set { movement = value; OnPropertyChanged(); } }
 
-        public Section() {
-            this.playerMatrix = new Dictionary<int, int>();
-            this.Number = 0;
-            this.name = 'A';
+        //@Todo
+        [XmlIgnore]
+        public List<Tuple<int,int>> PlayerMatrix { get => playerMatrix; set { playerMatrix = value; OnPropertyChanged(); } }
+        public int BoardsShift { get => boardsShift; set => boardsShift = value; }
+        public object PlayersShift { get => playersShift; set => playersShift = value; }
+
+        public Section(int number) : base(number) {
+            this.playerMatrix = new List<Tuple<int, int>>();
+            this._name = Strings.GetLetter(number);
+            this.BoardsShift = 0;
         }
+
+        private Section() : this(0) { }
     }
 }

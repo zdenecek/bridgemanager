@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="BridgeManager.Source.Views.SessionsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BridgeManager.Source.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid Name="dgSessions"
+                  ItemsSource="{Binding Sessions}"
+                  Margin="10,10,10,10" 
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False">
+
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Add a session" 
+                              Command="{Binding AddSessionCommand}"/>
+                    <MenuItem Header="Remove session" 
+                              Command="{Binding RemoveSessionCommand}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, 
+                                                         Path=PlacementTarget.SelectedItem}"/>
+                    <MenuItem Header="Assign database" 
+                              Command="{Binding AssignDatabaseFilepathCommand}"
+                              CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, 
+                                                         Path=PlacementTarget.SelectedItem}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Number"  Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Sections" Binding="{Binding Sections.Count}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="Database file" Binding="{Binding DatabaseFilepath }" IsReadOnly="True"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        
+    </Grid>
+</UserControl>

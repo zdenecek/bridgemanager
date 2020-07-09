@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BridgeManager.Source.IO
 {
-    class TextFileHandler
+    public class TextFileHandler
     {
         
         
@@ -15,11 +15,10 @@ namespace BridgeManager.Source.IO
 
             try {
                 using (StreamReader file = new StreamReader(filepath)) {
-
                     return await file.ReadToEndAsync();
                 }
             }
-            catch(Exception e) {
+            catch(Exception) {
                 throw;
             }
         }
