@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 namespace BridgeManager.Source.Model {
     public interface IScorer {
 
-        void CreatePartialScores(Session s);
+        void CreateIntermediateScores(Session s);
+
+        void CreateSessionScores(Session s);
 
     }
 }

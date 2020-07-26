@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace BridgeManager.Source.Model {
-    public class Movement : IndexedObject {
+    public class Movement : IndexedNamedObject {
 
         private int _tableCount, _roundCount;
 
@@ -69,7 +69,7 @@ namespace BridgeManager.Source.Model {
             this._tableCount = data.GetLength(0);
         }
 
-        private Movement() : base(0) { }
+        public Movement() : base(0) { }
 
         public bool ValidateData(RoundTableData[,] data) {
             /*if(data is null || data.Length == 0) return false;

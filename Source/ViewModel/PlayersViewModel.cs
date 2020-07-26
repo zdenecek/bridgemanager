@@ -16,6 +16,10 @@ namespace BridgeManager.Source.ViewModel {
 
     public class PlayersViewModel : ViewModelBase {
 
+        public ObservableCollection<Player> Players { get => MainViewModel.LoadedTournament?.Players; }
+
+        public ObservableCollection<Pair> Pairs { get => MainViewModel.LoadedTournament?.Pairs; }
+
         public Command AddPlayerCommand { get; private set; }
         public Command RemovePlayerCommand { get; private set; }
         public Command AddPairCommand { get; private set; }
@@ -24,18 +28,18 @@ namespace BridgeManager.Source.ViewModel {
         public PlayersViewModel(MainWindowViewModel mainController) : base(mainController) {
             PlayersControl view = new PlayersControl();
             this._view = view;
-
             this.Header = "Players";
 
-            var tournament = MainViewModel.LoadedTournament;
+            this.AddPlayerCommand = new DelegateCommand(() => AddPlayer());
+            this.RemovePlayerCommand = new DelegateCommand<Player>(p => RemovePlayer(p));
+            this.AddPairCommand = new DelegateCommand(() => AddPair());
+            this.RemovePairCommand = new DelegateCommand<Pair>(p => RemovePair(p));
 
-            this.AddPlayerCommand = new DelegateCommand(() => AddPlayer(tournament));
-            this.RemovePlayerCommand = new DelegateCommand<Player>(p => RemovePlayer(tournament, p));
-            this.AddPairCommand = new DelegateCommand(() => AddPair(tournament));
-            this.RemovePairCommand = new DelegateCommand<Pair>(p => RemovePair(tournament, p));
+            MainViewModel.PropertyChanged += (s, a) => { OnPropertyChanged("Players"); OnPropertyChanged("Pairs"); };
         }
 
-        public Player AddPlayer(Tournament tournament) {
+        public Player AddPlayer() {
+            var tournament = MainViewModel.LoadedTournament;
             Player player = new Player(tournament.Players.Count + 1) 
             {
                 Name = Strings.Get("unknown_player") 
@@ -44,14 +48,15 @@ namespace BridgeManager.Source.ViewModel {
             return player;
         }
 
-        public void RemovePlayer(Tournament tournament, Player player) {
+        public void RemovePlayer(Player player) {
+            var tournament = MainViewModel.LoadedTournament;
             if (player == null) {
                 Console.WriteLine("Remove player: No player selected");
                 return;
             }
-            else if (player.Pair != null) {
+         /*   else if (MainViewModel.LoadedTournament.Pairs.Where(pair => pair.Players.Contains(player)).Count() != 0) {
                 return;
-            }
+            }*/
             tournament.Players.Remove(player);
             if (player.Number > 0)
                 foreach (Player p in from p in tournament.Players
@@ -61,30 +66,31 @@ namespace BridgeManager.Source.ViewModel {
                 }
         }
 
-        public Pair AddPair(Tournament tournament) {
+        public Pair AddPair() {
+            var tournament = MainViewModel.LoadedTournament;
 
             int number = tournament.Pairs.Count + 1;
 
             Pair pair = new Pair(number) {
-                Player1 = AddPlayer(tournament),
-                Player2 = AddPlayer(tournament)
+                Player1 = AddPlayer(),
+                Player2 = AddPlayer()
             };
 
             tournament.Pairs.Add(pair);
 
             return pair;
         }
-        public void RemovePair(Tournament tournament, Pair pair) {
-
+        public void RemovePair(Pair pair) {
+            var tournament = MainViewModel.LoadedTournament;
             if (pair == null) {
                 Console.WriteLine("Remove pair: No Pair Selected");
                 return;
             }
 
             tournament.Pairs.Remove(pair);
-            pair.ClearReference();
-            RemovePlayer(tournament, pair.Player1);
-            RemovePlayer(tournament, pair.Player2);
+            //pair.ClearReference();
+            RemovePlayer(pair.Player1);
+            RemovePlayer(pair.Player2);
 
             foreach (Pair p in from p in tournament.Pairs
                                where p.Number >= pair.Number

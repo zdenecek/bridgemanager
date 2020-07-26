@@ -1,5 +1,6 @@
 ﻿using BridgeManager.Source.IO;
 using BridgeManager.Source.Model;
+using BridgeManager.Source.Services;
 using BridgeManager.Source.ViewModel.Commands;
 using BridgeManager.Source.Views;
 using System;
@@ -13,18 +14,23 @@ using System.Windows.Input;
 namespace BridgeManager.Source.ViewModel {
     class SectionsViewModel : ViewModelBase {
 
-        private Session LoadedSession { get => MainViewModel.LoadedSession; }
+        private IDialogService dialogService;
 
-        public ObservableCollection<Section> Sections { get => LoadedSession.Sections; }
+        public Session LoadedSession { get => MainViewModel.LoadedSession; }
+        public ObservableCollection<Section> Sections { get => LoadedSession?.Sections; }
 
         public ICommand AddSectionCommand { get; set; }
         public ICommand RemoveSectionCommand { get; set; }
         public ICommand AssignMovementToSectionCommand { get; set; }
 
 
-        public SectionsViewModel(MainWindowViewModel mainWindowViewModel) : base(mainWindowViewModel) {
-            this._view = new SectionsControl();
+        public SectionsViewModel(
+            MainWindowViewModel mainWindowViewModel,
+            IDialogService dialogService) : base(mainWindowViewModel) {
+            _view = new SectionsControl();
             this.Header = "Sections";
+
+            this.dialogService = dialogService;
 
             this.AddSectionCommand = new DelegateCommand(() => AddSection());
             this.RemoveSectionCommand = new DelegateCommand<Section>(RemoveSection);
@@ -59,7 +65,7 @@ namespace BridgeManager.Source.ViewModel {
                 Console.WriteLine("No section selected");
                 return;
             }
-            Movement movement = DialogService.MovementSelector(MainViewModel.Get<MovementsViewModel>().Movements);
+            Movement movement = dialogService.SelectMovement(MainViewModel.GetViewModel<MovementsViewModel>().Movements);
             Console.WriteLine("Selected: " + movement);
             toSection.Movement = movement;
         }

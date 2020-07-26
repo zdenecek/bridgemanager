@@ -59,6 +59,9 @@
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
@@ -88,30 +91,55 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Source\IO\Database\BMInput1DataSet.cs">
+    <Compile Include="BMInput_with_resultsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BMInput_with_resultsDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Services\Database\BCSService.cs" />
+    <Compile Include="Source\Services\Database\BMInput1DataSet.cs">
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="Source\IO\Database\AdapterBuilder.cs" />
-    <Compile Include="Source\IO\DialogService.cs" />
-    <Compile Include="Source\IO\SerializationService.cs" />
+    <Compile Include="Source\Services\Database\AdapterBuilder.cs" />
+    <Compile Include="Source\Services\Database\IBCSService.cs" />
+    <Compile Include="Source\Services\Database\IDatabaseService.cs" />
+    <Compile Include="Source\Services\Dialog\DialogService.cs" />
+    <Compile Include="Source\Services\Dialog\IDialogService.cs" />
+    <Compile Include="Source\Services\File\IFileService.cs" />
+    <Compile Include="Source\Services\Scoring\IScoringService.cs" />
+    <Compile Include="Source\Services\Scoring\ScoringService.cs" />
+    <Compile Include="Source\Services\Serialization\ISerializationService.cs" />
+    <Compile Include="Source\Services\Movements\IMovementsService.cs" />
+    <Compile Include="Source\Services\Serialization\SerializationService.cs" />
     <Compile Include="Source\Tools\ContainerConfig.cs" />
     <Compile Include="Source\Tools\Math.cs" />
-    <Compile Include="Source\IO\MovementParsing\IMovementParser.cs" />
-    <Compile Include="Source\IO\MovementParsing\Parsers\GiborgParser.cs" />
-    <Compile Include="Source\IO\Preferences.cs" />
-    <Compile Include="Source\IO\Scoring\IScorer.cs" />
+    <Compile Include="Source\Services\Movements\IMovementParser.cs" />
+    <Compile Include="Source\Services\Movements\Parsers\GiborgParser.cs" />
+    <Compile Include="Source\Services\Preferences.cs" />
+    <Compile Include="Source\Services\Scoring\IScorer.cs" />
     <Compile Include="Source\Model\PlayerUnit.cs" />
     <Compile Include="Source\Model\ProgressState.cs" />
     <Compile Include="Source\Model\Result.cs" />
-    <Compile Include="Source\IO\Scoring\MPScorer.cs" />
-    <Compile Include="Source\Model\PartialScore.cs" />
+    <Compile Include="Source\Services\Scoring\MPScorer.cs" />
     <Compile Include="Source\Model\Score.cs" />
-    <Compile Include="Source\ViewModel\Commands\Command.cs" />
-    <Compile Include="Source\ViewModel\Commands\DelegateCommand.cs" />
+    <Compile Include="Source\Commands\Command.cs" />
+    <Compile Include="Source\Commands\DelegateCommand.cs" />
+    <Compile Include="Source\ViewModel\ResultsViewModel.cs" />
+    <Compile Include="Source\ViewModel\TournamentViewModel.cs" />
+    <Compile Include="Source\ViewModel\ScoringViewModel.cs" />
     <Compile Include="Source\ViewModel\Dialog\MovementSelectorWindowViewModel.cs" />
     <Compile Include="Source\ViewModel\SectionsViewModel.cs" />
     <Compile Include="Source\ViewModel\SessionsViewModel.cs" />
+    <Compile Include="Source\Views\ResultsControl.xaml.cs">
+      <DependentUpon>ResultsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Views\ScoringControl.xaml.cs">
+      <DependentUpon>ScoringControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Views\TournamentControl.xaml.cs">
+      <DependentUpon>TournamentControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\Views\BridgemateControl.xaml.cs">
       <DependentUpon>BridgemateControl.xaml</DependentUpon>
     </Compile>
@@ -130,6 +158,18 @@
     <Compile Include="Source\Views\SessionsControl.xaml.cs">
       <DependentUpon>SessionsControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Source\Views\ResultsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Source\Views\ScoringControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Source\Views\TournamentControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Source\Views\BridgemateControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,30 +182,30 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Source\IO\Database\BMInput1DataSet.Designer.cs">
+    <Compile Include="Source\Services\Database\BMInput1DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Source\Component\ObservableObject.cs" />
-    <Compile Include="Source\Component\IndexedObject.cs" />
+    <Compile Include="Source\Component\IndexedNamedObject.cs" />
     <Compile Include="Source\ViewModel\BridgemateViewModel.cs" />
     <Compile Include="Source\ViewModel\ViewModelBase.cs" />
     <Compile Include="Source\ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Source\ViewModel\MovementsViewModel.cs" />
     <Compile Include="Source\ViewModel\PlayersViewModel.cs" />
-    <Compile Include="Source\IO\ConsoleOutputter.cs" />
-    <Compile Include="Source\IO\Database\DatabaseService.cs" />
-    <Compile Include="Source\IO\MovementParsing\MovementFileParser.cs" />
-    <Compile Include="Source\IO\TextFileHandler.cs" />
+    <Compile Include="Source\Services\ConsoleOutputter.cs" />
+    <Compile Include="Source\Services\Database\DatabaseService.cs" />
+    <Compile Include="Source\Services\Movements\MovementsService.cs" />
+    <Compile Include="Source\Services\File\FileService.cs" />
     <Compile Include="Source\Model\Movement.cs" />
     <Compile Include="Source\Model\Pair.cs" />
     <Compile Include="Source\Model\Player.cs" />
     <Compile Include="Source\Model\Section.cs" />
     <Compile Include="Source\Model\Session.cs" />
     <Compile Include="Source\Model\Tournament.cs" />
-    <Compile Include="Source\IO\Strings.cs" />
+    <Compile Include="Source\Services\Strings.cs" />
     <Compile Include="Source\Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -210,18 +250,29 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="BMInput1.bws" />
+    <None Include="BMInput_with_resultsDataSet.xsc">
+      <DependentUpon>BMInput_with_resultsDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BMInput_with_resultsDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BMInput_with_resultsDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BMInput_with_resultsDataSet.xss">
+      <DependentUpon>BMInput_with_resultsDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
-    <None Include="Source\IO\Database\BMInput1DataSet.xsc">
+    <None Include="Source\Services\Database\BMInput1DataSet.xsc">
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Source\IO\Database\BMInput1DataSet.xsd">
+    <None Include="Source\Services\Database\BMInput1DataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>BMInput1DataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Source\IO\Database\BMInput1DataSet.xss">
+    <None Include="Source\Services\Database\BMInput1DataSet.xss">
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -245,5 +296,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

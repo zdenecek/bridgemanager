@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="BridgeManager.Source.Views.ScoringControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BridgeManager.Source.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <WrapPanel>
+            <Button Height="30" Width="100" Margin="5" 
+                    Content="Create Scores" 
+                    Command="{Binding CreateScoresCommand}"/>
+
+            
+                
+        </WrapPanel>
+        <TabControl Grid.Column="1">
+            <TabItem Header="Intermediate">
+                <DataGrid ItemsSource="{Binding PartialScores}"
+                  Style="{StaticResource DataGridStyle}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Player" 
+                                    Binding="{Binding PlayerUnit}"/>
+                        <DataGridTextColumn Header="Opponent" 
+                                    Binding="{Binding OpponentPlayerUnit}"/>
+
+
+                        <DataGridTextColumn Header="Section" 
+                                    Binding="{Binding  AsociatedResult.Section.Name}"/>
+                        <DataGridTextColumn Header="Table" 
+                                    Binding="{Binding AsociatedResult.Table}"/>
+                        <DataGridTextColumn Header="Round" 
+                                    Binding="{Binding AsociatedResult.Round}"/>
+                        <DataGridTextColumn Header="Board" 
+                                    Binding="{Binding AsociatedResult.Board}"/>
+                        <DataGridTextColumn Header="Pair NS" 
+                                    Binding="{Binding AsociatedResult.PairNS}"/>
+                        <DataGridTextColumn Header="Pair EW" 
+                                    Binding="{Binding AsociatedResult.PairEW}"/>
+                        <DataGridTextColumn Header="Contract" 
+                                    Binding="{Binding AsociatedResult.Short}"/>
+
+
+                        <DataGridTextColumn Header="Points" 
+                                    Binding="{Binding Points}"/>
+                        <DataGridTextColumn Header="Maximum" 
+                                    Binding="{Binding MaxPoints}"/>
+
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </TabItem>
+            <TabItem Header="Session">
+                <DataGrid ItemsSource="{Binding Scores}"
+                          Style="{StaticResource DataGridStyle}" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Player" 
+                                    Binding="{Binding PlayerUnit.Name}"/>
+                         
+                        <DataGridTextColumn Header="Points" 
+                                    Binding="{Binding Points}"/>
+                        <DataGridTextColumn Header="Maximum" 
+                                    Binding="{Binding MaxPoints}"/>
+                        <DataGridTextColumn Header="Percent" 
+                                    Binding="{Binding Percentage}"/>
+
+                    </DataGrid.Columns>
+
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+      
+    </Grid>
+</UserControl>

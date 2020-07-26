@@ -9,14 +9,10 @@ namespace BridgeManager.Source.Model
 {
     public class Player : PlayerUnit
     {  
-        private Pair _pair = null;
-
-        public Pair Pair { get => _pair; set { _pair = value; OnPropertyChanged(); } }
-
         public Player(int number) : base(number) {
         }
 
-        private Player() : this(0) { }
+        public Player() : this(0) { }
 
     }
 }

@@ -13,13 +13,14 @@ namespace BridgeManager.Source.IO {
             public ConsoleOutputter(TextBox output) {
                 textBox = output;
             }
-
+   
             public override void Write(char value) {
                 base.Write(value);
                 textBox.Dispatcher.BeginInvoke(new Action(() =>
                 {
                     textBox.AppendText(value.ToString());
                 }));
+                textBox.ScrollToEnd();
             }
 
             public override Encoding Encoding {

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BridgeManager.Source.Model {
-    public abstract class PlayerUnit : IndexedObject {
+    public abstract class PlayerUnit : IndexedNamedObject {
 
         public PlayerUnit(int number) : base(number) {
         }

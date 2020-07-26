@@ -7,7 +7,11 @@ using System.Threading.Tasks;
 
 namespace BridgeManager.Source.Model {
     public class Result {
-        
+
+        public Result()
+        {
+        }
+
         public Section Section { get; set; }
         public int Table { get; set; }
         public int Round { get; set; }
@@ -29,18 +33,36 @@ namespace BridgeManager.Source.Model {
 
         public bool Processed { get; set; } = false;
 
+        public bool NotPlayedOrArbitraryScore
+        {
+            get => Contract == "";
+        }
+
+        public string Short { get => $"{Contract} {NSEW} {_Result}"; }
+
+
         public int NSPoints() {
-            return BridgeMath.GetNSScore(this);
+            if (NotPlayedOrArbitraryScore) throw new Exception("Result is 'not played', cannot get points");
+             return BridgeMath.GetNSScore(this);
+           
         }
 
         public int EWPoints() {
+            if (NotPlayedOrArbitraryScore) throw new Exception("Result is 'not played', cannot get points");
             return -NSPoints();
+           
         }
 
-        public bool NotPlayedOrArbitraryScore() {
-            return Contract == "";
+
+
+
+        public override string ToString()
+        {
+            return $" { (Erased? "ERASED" : "") } Section {Section.Name} Table {Table} Round {Round} Board {Board} NS: ({PairNS.Number}) EW: ({PairEW.Number})" +
+                $" {Contract} {NSEW} {_Result} Lead {LeadCard} " +
+                $"Notes: {Notes}";
         }
 
-        
+
     }
 }

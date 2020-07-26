@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace BridgeManager.Source.Model
 {
 
-    public class Session : IndexedObject {
+    public class Session : IndexedNamedObject {
 
         private string _databaseFilepath;
 
@@ -22,7 +22,8 @@ namespace BridgeManager.Source.Model
 
         public ObservableCollection<Result> Results { get; set; }
         public ObservableCollection<Result> IntermediateResults { get; set; }
-        public ObservableCollection<PartialScore> PartialScores { get; set; }
+        public ObservableCollection<Score> IntermediateScores { get; set; }
+        public ObservableCollection<Score> FinalScores { get; set; }
 
         public Session(int number) : base(number) {
             this.Name = "Section " + Number;
@@ -30,10 +31,11 @@ namespace BridgeManager.Source.Model
 
             this.Results = new ObservableCollection<Result>();
             this.IntermediateResults = new ObservableCollection<Result>();
-            this.PartialScores = new ObservableCollection<PartialScore>();
+            this.IntermediateScores = new ObservableCollection<Score>();
+            this.FinalScores = new ObservableCollection<Score>();
         }
 
-        private Session() : this(number: 0)
+        public Session() : this(number: 0)
         { }
 
     }

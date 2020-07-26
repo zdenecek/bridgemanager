@@ -3,9 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BridgeManager"
              
-             DispatcherUnhandledException="Application_DispatcherUnhandledException"
              Startup="Application_Startup">
+    <!-- DispatcherUnhandledException="Application_DispatcherUnhandledException" -->
+
+
     <Application.Resources>
-         
+        <Style x:Key="DataGridStyle" TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="SelectionMode" Value="Single" />
+            <Setter Property="CanUserReorderColumns" Value="False"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True" />
+            
+        </Style>
+
     </Application.Resources>
 </Application>

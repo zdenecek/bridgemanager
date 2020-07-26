@@ -5,13 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BridgeManager.Source.IO
+namespace BridgeManager.Source.Services.File
 {
-    public class TextFileHandler
+    public class FileService : IFileService
     {
-        
-        
-        public static async Task<String> ParseTextFile(string filepath) {
+   
+        public async Task<String> ParseTextFile(string filepath) {
 
             try {
                 using (StreamReader file = new StreamReader(filepath)) {
@@ -22,7 +21,6 @@ namespace BridgeManager.Source.IO
                 throw;
             }
         }
-
 
     }
 }

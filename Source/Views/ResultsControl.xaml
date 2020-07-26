@@ -1,0 +1,51 @@
+﻿<UserControl x:Class="BridgeManager.Source.Views.ResultsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BridgeManager.Source.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    
+
+        <TabControl>
+            <TabItem Header="Results">
+            <DataGrid ItemsSource="{Binding Results}"
+                  Style="{StaticResource DataGridStyle}" 
+                  >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Section" 
+                                    Binding="{Binding Section.Name}"/>
+                    <DataGridTextColumn Header="Table" 
+                                    Binding="{Binding Table}"/>
+                    <DataGridTextColumn Header="Round" 
+                                    Binding="{Binding Round}"/>
+                    <DataGridTextColumn Header="Board" 
+                                    Binding="{Binding Board}"/>
+                    <DataGridTextColumn Header="Pair NS" 
+                                    Binding="{Binding PairNS}"/>
+                    <DataGridTextColumn Header="Pair EW" 
+                                    Binding="{Binding PairEW}"/>
+                    <DataGridTextColumn Header="Contract" 
+                                    Binding="{Binding Contract}"/>
+                    <DataGridTextColumn Header="Declarer" 
+                                    Binding="{Binding NSEW}"/>
+                    <DataGridTextColumn Header="Result" 
+                                    Binding="{Binding _Result}"/>
+                    <DataGridTextColumn Header="Lead" 
+                                    Binding="{Binding LeadCard}"/>
+                    <DataGridCheckBoxColumn Header="Erased" 
+                                    Binding="{Binding Erased}"/>
+                    <DataGridTextColumn Header="Notes" 
+                                    Binding="{Binding Notes}"/>
+
+                </DataGrid.Columns>
+
+            </DataGrid>
+            
+            
+
+        </TabItem>
+        </TabControl>
+    
+</UserControl>

@@ -9,7 +9,7 @@ namespace BridgeManager.Source.IO {
     public static class BridgeMath {
 
         public static int GetNSScore(Result result) {
-            if (result.NotPlayedOrArbitraryScore()) throw new Exception("Cannot return NSPoints, there was no play or an arbitrary score");
+            if (result.NotPlayedOrArbitraryScore) throw new Exception("Cannot return NSPoints, there was no play or an arbitrary score");
             else if (result.Contract == "PASS") return 0;
 
             var c = result.Contract.Split(' ');

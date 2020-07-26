@@ -10,9 +10,9 @@ namespace BridgeManager.Source.IO.MovementParsing {
 
         string ParserName { get; }
 
-        bool CanParse(string loadedText, string filePath);
+        bool CanParse(string loadedText, string filename);
 
-        Movement Parse(string loadedText, string filePath);
+        Movement Parse(string loadedText, string filename);
 
     }
 }

@@ -11,6 +11,8 @@ using BridgeManager.Source.ViewModel.Commands;
 using BridgeManager.Source.Views;
 using BridgeManager.Source.IO.Database;
 using System.Diagnostics;
+using BridgeManager.Source.Services.Database;
+using BridgeManager.Source.Services;
 
 namespace BridgeManager.Source.ViewModel
 {
@@ -20,17 +22,19 @@ namespace BridgeManager.Source.ViewModel
     
         public string bcsArgs = "/f:[{database}] /s /r";
 
-        private DatabaseService databaseService;
+        private IBCSService bcsService;
+        private IDialogService dialogService;
 
         public Command SendCurrentSessionCommand { get; private set; }
         public Command StartBCSCommand { get; private set; }
 
         public Command RetrieveResultsCommand { get; private set; }
 
-        public BridgemateViewModel(MainWindowViewModel mainController) : base(mainController) {
+        public BridgemateViewModel(MainWindowViewModel mainController, IBCSService bcs, IDialogService dialogService) : base(mainController) {
             Header = "BM";
             _view = new BridgemateControl();
-            databaseService = new DatabaseService();
+            this.bcsService = bcs;
+            this.dialogService = dialogService;
 
             this.SendCurrentSessionCommand = new DelegateCommand(SendDataToBM);
             this.StartBCSCommand = new DelegateCommand(StartBCS);
@@ -43,13 +47,13 @@ namespace BridgeManager.Source.ViewModel
                 Console.WriteLine("No filepath is set for current session");
                 return;
             }
-            databaseService.SendMovementData(MainViewModel.LoadedSession);
+            bcsService.SendMovementData(MainViewModel.LoadedSession);
             Console.WriteLine("Database successfully updated!");
         }
 
         public void StartBCS() {
 
-            var database = MainViewModel.LoadedSession.DatabaseFilepath;
+            var database = MainViewModel.LoadedSession?.DatabaseFilepath;
 
             ProcessStartInfo startInfo = new ProcessStartInfo
             {
@@ -59,11 +63,51 @@ namespace BridgeManager.Source.ViewModel
 
             var process = new Process() { StartInfo = startInfo };
 
-            process.Start();
+            try
+            {
+                process.Start();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Cannot start BCS, exception:" + e.Message);
+            }
         }
 
         public void RetrieveResults() {
-            databaseService.RetrieveResults(MainViewModel.LoadedSession, MainViewModel.LoadedTournament) ;
+            try
+            {
+                bcsService.RetrieveResults(MainViewModel.LoadedSession, MainViewModel.LoadedTournament);
+                Console.WriteLine("Results retrieved sucessfully!");
+            }
+            catch (InconsistentModelException e)
+            {
+                Console.WriteLine("Incosistent DB: " + e.InconsistencyType);
+                var q = dialogService.GetYesOrNo($"There are more {e.InconsistencyType} in the database than in the tournament. \n" +
+                    $"Do you want to add {e.InconsistencyType} to make up the diference?");
+
+                if(q == DialogResult.Yes)
+                {
+                    Action a = null;
+                    var iterations = e.CountInDB - e.CountInModel;
+
+                    if(e.InconsistencyType == InconsistentModelException.ModelDBInconsistencyType.Pairs)
+                    {
+                        a = () => { MainViewModel.GetViewModel<PlayersViewModel>().AddPair(); };
+                        
+                    }
+                    else if(e.InconsistencyType == InconsistentModelException.ModelDBInconsistencyType.Sections)
+                    {
+                        a = () => { MainViewModel.GetViewModel<SectionsViewModel>().AddSection(); };
+                    }
+
+                    for (int i = 0; i < iterations; i++)
+                    {
+                        a.Invoke();
+                    }
+                    RetrieveResults();
+                }
+            }
+
         }
 
     }

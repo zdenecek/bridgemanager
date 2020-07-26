@@ -12,27 +12,33 @@ using System.Windows;
 
 namespace BridgeManager.Source.IO.MovementParsing
 {
-    public class MovementFileParser {
+    public class MovementsService : IMovementsService
+    {
 
         public List<IMovementParser> Parsers { get; private set; }
 
-        public MovementFileParser() {
+        public MovementsService()
+        {
             Parsers = new List<IMovementParser> {
                 new GiborgParser()
             };
         }
 
-        public async Task<Movement> ParseMovementFromFile(string loadedText, string filepath) {
+        public async Task<Movement> ParseMovementFromFile(string loadedText, string filepath)
+        {
 
             IMovementParser selectedParser = null;
 
-            try {
-                foreach(IMovementParser parser in Parsers) {
+            try
+            {
+                foreach (IMovementParser parser in Parsers)
+                {
                     if (parser.CanParse(loadedText, filepath))
                         selectedParser = parser;
                 }
 
-                if (selectedParser == null) {
+                if (selectedParser == null)
+                {
                     Console.WriteLine("Unknown movement file type");
                     return null;
                 }
@@ -43,10 +49,11 @@ namespace BridgeManager.Source.IO.MovementParsing
                 return m;
 
             }
-            catch (Exception e) {
+            catch
+            {
                 Console.WriteLine($"Error parsing movement. File: {filepath} Used parser {selectedParser?.ParserName}");
                 return null;
             }
-        }    
+        }
     }
 }

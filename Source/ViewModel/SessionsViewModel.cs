@@ -1,5 +1,6 @@
 ﻿using BridgeManager.Source.IO;
 using BridgeManager.Source.Model;
+using BridgeManager.Source.Services;
 using BridgeManager.Source.ViewModel.Commands;
 using BridgeManager.Source.Views;
 using System;
@@ -13,31 +14,37 @@ using System.Windows.Input;
 namespace BridgeManager.Source.ViewModel {
     public class SessionsViewModel : ViewModelBase {
 
-        public ObservableCollection<Session> Sessions { get => MainViewModel.LoadedTournament.Sessions; }
+        private IDialogService dialogService;
 
+        public ObservableCollection<Session> Sessions { get => MainViewModel.LoadedTournament?.Sessions; }
 
         public Command AddSessionCommand { get; set; }
         public Command RemoveSessionCommand { get; set; }
         public Command AssignDatabaseFilepathCommand { get; set; }
 
-        public SessionsViewModel(MainWindowViewModel mainWindowViewModel) : base(mainWindowViewModel) {
-            this._view = new SessionsControl();
+        public SessionsViewModel(MainWindowViewModel mainWindowViewModel,
+            IDialogService dialogService) : base(mainWindowViewModel)
+        {
+            _view = new SessionsControl();
             Header = "Sessions";
 
-            this.AddSessionCommand = new DelegateCommand(() => AddSession(MainViewModel.LoadedTournament));
-            this.RemoveSessionCommand = new DelegateCommand<Session>(sess => RemoveSession(MainViewModel.LoadedTournament, sess));
-            this.AssignDatabaseFilepathCommand = new DelegateCommand<Session>(AssignDatabaseFilepath);
+            this.dialogService = dialogService;
 
+            this.AddSessionCommand = new DelegateCommand(() => AddSession());
+            this.RemoveSessionCommand = new DelegateCommand<Session>(s=> RemoveSession(s));
+            this.AssignDatabaseFilepathCommand = new DelegateCommand<Session>(AssignDatabaseFilepath);
         }
 
-        public Session AddSession(Tournament tournament) {
+        public Session AddSession() {
+            var tournament = MainViewModel.LoadedTournament;
             Session session = new Session(tournament.Sessions.Count + 1);
             tournament.Sessions.Add(session);
             return session;
         }
 
-        public void RemoveSession(Tournament tournament, Session session) {
-            if(session.Equals(MainViewModel.LoadedSession)) {
+        public void RemoveSession(Session session) {
+            var tournament = MainViewModel.LoadedTournament;
+            if (session.Equals(MainViewModel.LoadedSession)) {
                 Console.WriteLine("Cannot remove loaded session");
                 return;
             }
@@ -48,7 +55,7 @@ namespace BridgeManager.Source.ViewModel {
         }
 
         public void AssignDatabaseFilepath(Session session) {
-            session.DatabaseFilepath = DialogService.FileDialog();
+            session.DatabaseFilepath = dialogService.GetExistingFilepath();
         }
     }
 }

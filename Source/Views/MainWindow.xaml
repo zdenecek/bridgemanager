@@ -13,15 +13,6 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <Menu HorizontalAlignment="Left" Height="20" Grid.ColumnSpan="1" VerticalAlignment="Stretch">
-            <MenuItem Header="Tournament">
-                <MenuItem Header="New" Command="{Binding CreateNewCommand}"/>
-                <MenuItem Header="Open"  Command="{Binding OpenCommand}"/>
-                <MenuItem Header="Save as"  Command="{Binding SaveAsCommand}" />
-            </MenuItem>
-            
-        </Menu>
-
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                     Grid.Row="1"
                     ItemsSource="{Binding ViewModels}"
