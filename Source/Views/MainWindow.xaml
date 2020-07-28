@@ -3,18 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BridgeManager"
+        xmlns:viewModel="clr-namespace:BridgeManager.Source.ViewModel"
+        xmlns:p ="clr-namespace:BridgeManager.Properties"
         mc:Ignorable="d"
-        Title="TournamentName - Session X" Height="600" Width="800">
+        Title="Bridge Manager" Height="600" Width="800"
+        d:DataContext="{d:DesignInstance viewModel:MainWindowViewModel}" >
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="110"/>
+        </Grid.ColumnDefinitions>
+
         <TabControl HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
-                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
                     ItemsSource="{Binding ViewModels}"
                     SelectedIndex="0">
             <TabControl.ItemTemplate>
@@ -29,8 +35,24 @@
             </TabControl.ContentTemplate>
         </TabControl>
 
+        <TextBox IsReadOnly="True"
+                 Name="ConsoleTextBox"
+                 HorizontalAlignment="Stretch"
+                 Margin="5" 
+                 Grid.Row="2" 
+                 TextWrapping="Wrap" 
+                 VerticalAlignment="Stretch"/>
 
+        <StackPanel Orientation="Vertical"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    >
+            
+                <Button Content="{x:Static p:Strings.settings_title}"
+                        Command="{Binding OpenSetting}"/>
 
-        <TextBox IsReadOnly="True" Name="ConsoleTextBox" HorizontalAlignment="Stretch" Margin="10,10.291,10.309,9.655" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Stretch"/>
+            
+            
+        </StackPanel>
     </Grid>
 </Window>

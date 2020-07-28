@@ -1,20 +1,15 @@
-﻿using BridgeManager.Source.IO;
-using BridgeManager.Source.IO.MovementParsing;
-using BridgeManager.Source.Model;
-using BridgeManager.Source.Services;
-using BridgeManager.Source.Services.File;
+﻿using BridgeManager.Source.Model;
+using BridgeManager.Source.Services.Dialog;
+using BridgeManager.Source.Services.Files;
+using BridgeManager.Source.Services.Movements;
 using BridgeManager.Source.ViewModel.Commands;
 using BridgeManager.Source.Views;
-using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace BridgeManager.Source.ViewModel {
+namespace BridgeManager.Source.ViewModel
+{
     public class MovementsViewModel : ViewModelBase {
 
         private IMovementsService movementsService;
@@ -34,7 +29,7 @@ namespace BridgeManager.Source.ViewModel {
         {
             _movements = new ObservableCollection<Movement>();
             _view = new MovementsControl();
-            Header = "Movements";
+            Header = Properties.Strings.movements_title;
 
             this.movementsService = movementsService;
             this.fileService = fileService;

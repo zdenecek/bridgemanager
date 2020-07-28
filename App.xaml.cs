@@ -1,53 +1,66 @@
-﻿using BridgeManager.Source;
-using BridgeManager.Source.ViewModel;
-using BridgeManager.Source.IO;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using BridgeManager.Source.Tools;
-using Autofac;
-using System.Reflection;
-using BridgeManager.Source.Model;
+﻿using Autofac;
 using BridgeManager.Source.Services;
-using BridgeManager.Source.ViewModel.Commands;
+using BridgeManager.Source.Utilities;
+using BridgeManager.Source.ViewModel;
+using System;
+using System.Threading;
+using System.Windows;
 
-namespace BridgeManager {
+namespace BridgeManager
+{
     /// <summary>
     /// Interaction logic for App.xaml
     /// </summary>
     public partial class App : Application {
-        
-        
+
+        private MainWindowViewModel mainWindowViewModel;
+
+
+        public static void ChangeCulture(string culture)
+        {
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(culture);
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture);
+        }
 
         private void Application_Startup(object sender, StartupEventArgs e) {
 
-            var container = ContainerConfig.Configure();
+            ChangeCulture(BridgeManager.Properties.Settings.Default.ui_language);
+            BridgeManager.Properties.Strings.Culture = new System.Globalization.CultureInfo(BridgeManager.Properties.Settings.Default.ui_language);
+
+             var container = ContainerConfig.Configure();
 
             var scope = container.BeginLifetimeScope();
-            ConfigureMainWindowViewmodel(scope);
+            ConfigureNestedViewModels(scope);
 
-            var mainViewModel = scope.Resolve<MainWindowViewModel>();
-            
+            this.mainWindowViewModel = scope.Resolve<MainWindowViewModel>();
 
-            Console.SetOut(new ConsoleOutputter(mainViewModel.MainWindow.ConsoleTextBox));
+            ConfigureMainWindow();
+
+            //----------------------------------------------------------
+                        
             Console.WriteLine("Welcome to BridgeManager v. 0.1");
-
-            Strings.Initialize();
+            Console.WriteLine("Current language is:" + Thread.CurrentThread.CurrentUICulture);
+            Console.WriteLine(BridgeManager.Properties.Strings.bridgemate_retrieve_results);
 
             defaultTest(scope);
+        }
+
+        private void ConfigureMainWindow()
+        {
+            MainWindow = mainWindowViewModel.MainWindow;
+            ShutdownMode = ShutdownMode.OnMainWindowClose;
+            
+            Console.SetOut(new ConsoleOutputter(mainWindowViewModel.MainWindow.ConsoleTextBox));
         }
 
         private void defaultTest(ILifetimeScope scope)
         {
             scope.Resolve<TournamentViewModel>().Open(@"c:\Users\zdnek\ME\Bridge\BridgeManager\testfiles\tx.json");
             scope.Resolve<ScoringViewModel>().CreateScores();
+            Console.WriteLine(Thread.CurrentThread.CurrentCulture.ToString() + Thread.CurrentThread.CurrentUICulture.ToString());
         }
 
-        private void ConfigureMainWindowViewmodel(ILifetimeScope scope)
+        private void ConfigureNestedViewModels(ILifetimeScope scope)
         {
             var mainController = scope.Resolve<MainWindowViewModel>();
 

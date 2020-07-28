@@ -1,7 +1,7 @@
 ﻿using BridgeManager.Source.Model;
 using System.Threading.Tasks;
 
-namespace BridgeManager.Source.IO.MovementParsing
+namespace BridgeManager.Source.Services.Movements
 {
     public interface IMovementsService
     {

@@ -1,4 +1,4 @@
-﻿using BridgeManager.Source.IO.Database;
+﻿using BridgeManager.Source.Services.Database;
 
 namespace BridgeManager.Source.Services.Database
 {

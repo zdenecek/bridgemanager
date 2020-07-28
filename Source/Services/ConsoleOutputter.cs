@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace BridgeManager.Source.IO {
+namespace BridgeManager.Source.Services {
     class ConsoleOutputter : TextWriter {
             TextBox textBox;
 

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BridgeManager.Source.Views"
              mc:Ignorable="d" 
+             xmlns:p="clr-namespace:BridgeManager.Properties"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -19,62 +20,66 @@
 
         <DataGrid Name="dgPlayers" 
                               Style="{StaticResource DataGridStyle}"
-                              ItemsSource="{Binding Players, 
-                                                    UpdateSourceTrigger=PropertyChanged}"
+                              IsReadOnly="False"
+                              ItemsSource="{Binding Players}"
                               Grid.Column="0"
                               Grid.RowSpan="2">
 
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Id" Binding= "{Binding Number, Mode=TwoWay}">
-                </DataGridTextColumn>
-                <DataGridTextColumn Header="Name" Binding= "{Binding Name, Mode=TwoWay}"/>
-                <DataGridTextColumn Header="Name" Binding= "{Binding Pair.Number, Mode=OneWay}"/>
+                <DataGridTextColumn Header="{x:Static p:Strings.players_table_players_id}" 
+                                    Binding= "{Binding Number, Mode=TwoWay}"/>
+
+                <DataGridTextColumn Header="{x:Static p:Strings.players_table_name}" 
+                                    Binding= "{Binding Name, Mode=TwoWay}"/>
 
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu DataContext="{Binding PlacementTarget.DataContext, 
-	                                               RelativeSource={RelativeSource Self}}">
-                    <MenuItem Header="Remove player" 
+                                                   RelativeSource={RelativeSource Self}}">
+                    <MenuItem Header="{x:Static p:Strings.players_remove_player}" 
                               Command="{Binding RemovePlayerCommand}"
                               CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, 
                                                          Path=PlacementTarget.SelectedItem}"/>
-                    <MenuItem Header="Add a player" 
+                    <MenuItem Header="{x:Static p:Strings.players_add_player}" 
                               Command="{Binding AddPlayerCommand}"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
 
         <DataGrid Name="dgPairs" 
-                              ItemsSource="{Binding Pairs}"
-                               Style="{StaticResource DataGridStyle}"
-                              Grid.RowSpan="2" 
-                              Grid.Column="1">
+                  ItemsSource="{Binding Pairs}"
+                  Style="{StaticResource DataGridStyle}"
+                  IsReadOnly="False"
+                  Grid.RowSpan="2" 
+                  Grid.Column="1">
 
             <DataGrid.Columns>
-                <DataGridTextColumn  Header="ID" 
-                                                 Binding="{Binding Number}"/>
+                <DataGridTextColumn  Header="{x:Static p:Strings.players_table_pairs_id}"
+                                     Binding="{Binding Number, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
-                <DataGridTextColumn  Header="ID" 
-                                                 Binding="{Binding Player1.Number}" />
+                <DataGridTextColumn  Header="{x:Static p:Strings.players_table_players_id}"
+                                     Binding="{Binding Player1.Number}" 
+                                     IsReadOnly="True"/>
 
-                <DataGridTextColumn  Header="Player 1" 
-                                                 Binding="{Binding Player1.Name , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                <DataGridTextColumn  Header="{x:Static p:Strings.players_table_pairs_player_1}"
+                                     Binding="{Binding Player1.Name , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
 
-                <DataGridTextColumn  Header="ID" 
-                                                 Binding="{Binding Player2.Number}" />
+                <DataGridTextColumn  Header="{x:Static p:Strings.players_table_players_id}"
+                                     Binding="{Binding Player2.Number}"
+                                     IsReadOnly="True"/>
 
-                <DataGridTextColumn  Header="Player 2" 
-                                                 Binding="{Binding Player2.Name , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                <DataGridTextColumn  Header="{x:Static p:Strings.players_table_pairs_player_2}"
+                                     Binding="{Binding Player2.Name , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                                  />
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Remove pair" 
+                    <MenuItem Header="{x:Static p:Strings.players_remove_pair}"
                               Command="{Binding RemovePairCommand}"
                               CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, 
                                                          Path=PlacementTarget.SelectedItem}"/>
-                    <MenuItem Header="Add a pair"
+                    <MenuItem Header="{x:Static p:Strings.players_add_pair}"
                               Command="{Binding AddPairCommand}"/>
 
                 </ContextMenu>

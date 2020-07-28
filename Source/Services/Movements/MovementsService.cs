@@ -1,4 +1,4 @@
-﻿using BridgeManager.Source.IO.MovementParsing;
+﻿using BridgeManager.Source.Services.Movements;
 using BridgeManager.Source.Model;
 using Microsoft.Win32;
 using System;
@@ -9,8 +9,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using BridgeManager.Source.Services.Movements.Parsers;
 
-namespace BridgeManager.Source.IO.MovementParsing
+namespace BridgeManager.Source.Services.Movements
 {
     public class MovementsService : IMovementsService
     {

@@ -1,19 +1,9 @@
 ﻿using BridgeManager.Source.Model;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.OleDb;
+using BridgeManager.Source.Services;
+using BridgeManager.Source.Services.Dialog;
 using BridgeManager.Source.ViewModel.Commands;
 using BridgeManager.Source.Views;
-using BridgeManager.Source.IO.Database;
-using System.Diagnostics;
-using BridgeManager.Source.Services.Database;
-using BridgeManager.Source.Services;
-using BridgeManager.Source.IO;
+using System;
 
 namespace BridgeManager.Source.ViewModel
 {
@@ -32,7 +22,7 @@ namespace BridgeManager.Source.ViewModel
         public TournamentViewModel(MainWindowViewModel mainController, IDialogService dialog, ISerializationService serialization) : base(mainController) {
             Header = "Tournament";
             _view = new TournamentControl();
-
+                        
             xmlService = serialization;
             dialogService = dialog;
 

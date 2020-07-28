@@ -1,4 +1,5 @@
 ﻿using BridgeManager.Source.Model;
+using BridgeManager.Source.Services;
 using BridgeManager.Source.ViewModel.Commands;
 using BridgeManager.Source.Views;
 using System;
@@ -28,35 +29,55 @@ namespace BridgeManager.Source.ViewModel {
         public PlayersViewModel(MainWindowViewModel mainController) : base(mainController) {
             PlayersControl view = new PlayersControl();
             this._view = view;
-            this.Header = "Players";
+            this.Header = Properties.Strings.players_title;
 
             this.AddPlayerCommand = new DelegateCommand(() => AddPlayer());
-            this.RemovePlayerCommand = new DelegateCommand<Player>(p => RemovePlayer(p));
+            this.RemovePlayerCommand = new DelegateCommand<Player>(RemovePlayer);
             this.AddPairCommand = new DelegateCommand(() => AddPair());
-            this.RemovePairCommand = new DelegateCommand<Pair>(p => RemovePair(p));
+            this.RemovePairCommand = new DelegateCommand<Pair>(RemovePair);
 
             MainViewModel.PropertyChanged += (s, a) => { OnPropertyChanged("Players"); OnPropertyChanged("Pairs"); };
         }
 
         public Player AddPlayer() {
-            var tournament = MainViewModel.LoadedTournament;
-            Player player = new Player(tournament.Players.Count + 1) 
+
+            if(IsLoaded == false)
             {
-                Name = Strings.Get("unknown_player") 
+                Console.WriteLine("No loaded tournament;");
+                return null;
+            }
+
+            var tournament = MainViewModel.LoadedTournament;
+
+            Player player = new Player(tournament.Players.Count + 1)
+            {
+                Name = "unknown_player"
             };
             tournament.Players.Add(player);
             return player;
         }
 
         public void RemovePlayer(Player player) {
-            var tournament = MainViewModel.LoadedTournament;
+            Console.WriteLine("RemoveP");
+
+            if (IsLoaded == false)
+            {
+                Console.WriteLine("No loaded tournament;");
+                return;
+            }
             if (player == null) {
                 Console.WriteLine("Remove player: No player selected");
                 return;
             }
-         /*   else if (MainViewModel.LoadedTournament.Pairs.Where(pair => pair.Players.Contains(player)).Count() != 0) {
+            var tournament = MainViewModel.LoadedTournament;
+
+            if (tournament.Pairs.Where(pair => pair.Player1.Equals(player) || pair.Player2.Equals(player))
+                .Count() != 0)
+            {
+                Console.WriteLine("Remove player: Cannot remove player in pair");
                 return;
-            }*/
+            }
+                         
             tournament.Players.Remove(player);
             if (player.Number > 0)
                 foreach (Player p in from p in tournament.Players
@@ -67,6 +88,12 @@ namespace BridgeManager.Source.ViewModel {
         }
 
         public Pair AddPair() {
+
+            if (IsLoaded == false)
+            {
+                Console.WriteLine("No loaded tournament;");
+                return null;
+            }
             var tournament = MainViewModel.LoadedTournament;
 
             int number = tournament.Pairs.Count + 1;
@@ -81,6 +108,12 @@ namespace BridgeManager.Source.ViewModel {
             return pair;
         }
         public void RemovePair(Pair pair) {
+
+            if (IsLoaded == false)
+            {
+                Console.WriteLine("No loaded tournament;");
+                return;
+            }
             var tournament = MainViewModel.LoadedTournament;
             if (pair == null) {
                 Console.WriteLine("Remove pair: No Pair Selected");
@@ -88,7 +121,6 @@ namespace BridgeManager.Source.ViewModel {
             }
 
             tournament.Pairs.Remove(pair);
-            //pair.ClearReference();
             RemovePlayer(pair.Player1);
             RemovePlayer(pair.Player2);
 

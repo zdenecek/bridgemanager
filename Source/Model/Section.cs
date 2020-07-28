@@ -1,6 +1,6 @@
 ﻿using BridgeManager.Source.Component;
 using BridgeManager.Source.Model.Scoring;
-
+using BridgeManager.Source.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -25,7 +25,7 @@ namespace BridgeManager.Source.Model
 
         public Section(int number) : base(number) {
             this.playerMatrix = new List<Tuple<int, int>>();
-            Name = Strings.GetLetter(number);
+            Name = TextualTools.GetLetter(number);
             this.BoardsShift = 0;
         }
 

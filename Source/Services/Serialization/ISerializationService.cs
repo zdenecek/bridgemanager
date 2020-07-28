@@ -1,6 +1,6 @@
 ﻿using BridgeManager.Source.Model;
 
-namespace BridgeManager.Source.IO
+namespace BridgeManager.Source.Services
 {
     public interface ISerializationService
     {

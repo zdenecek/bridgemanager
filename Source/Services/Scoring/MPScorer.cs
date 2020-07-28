@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BridgeManager.Source.Model;
+using BridgeManager.Source.Model.Scoring;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -6,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace BridgeManager.Source.Model.Scoring
+namespace BridgeManager.Source.Services.Scoring
 {
     public class MPScorer : IScorer
     {

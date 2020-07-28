@@ -1,18 +1,9 @@
-﻿using BridgeManager.Source.Model;
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.OleDb;
+﻿using System;
 using BridgeManager.Source.ViewModel.Commands;
 using BridgeManager.Source.Views;
-using BridgeManager.Source.IO.Database;
-using System.Diagnostics;
 using BridgeManager.Source.Services.Database;
-using BridgeManager.Source.Services;
+using System.Diagnostics;
+using BridgeManager.Source.Services.Dialog;
 
 namespace BridgeManager.Source.ViewModel
 {
@@ -31,7 +22,7 @@ namespace BridgeManager.Source.ViewModel
         public Command RetrieveResultsCommand { get; private set; }
 
         public BridgemateViewModel(MainWindowViewModel mainController, IBCSService bcs, IDialogService dialogService) : base(mainController) {
-            Header = "BM";
+            Header = Properties.Strings.bridgemate_title;
             _view = new BridgemateControl();
             this.bcsService = bcs;
             this.dialogService = dialogService;

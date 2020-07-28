@@ -5,23 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BridgeManager.Source.Views"
              mc:Ignorable="d" 
+             xmlns:p="clr-namespace:BridgeManager.Properties"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <DataGrid Name="dgMovement"
                   ItemsSource="{Binding Movements}"
-                  AutoGenerateColumns="False"
-                  Margin="10">
-
+                  Style="{StaticResource DataGridStyle}">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Description" Binding="{Binding Description}"/>
-                <DataGridTextColumn Header="Tables" Binding="{Binding TableCount}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Rounds" Binding="{Binding RoundCount}" IsReadOnly="True"/>
+                <DataGridTextColumn Header="{x:Static p:Strings.movements_table_name}" 
+                                    Binding="{Binding Name}"
+                                    IsReadOnly="False"/>
+                <DataGridTextColumn Header="{x:Static p:Strings.movements_table_description}"
+                                    Binding="{Binding Description}"/>
+                <DataGridTextColumn Header="{x:Static p:Strings.movements_table_tables}"
+                                    Binding="{Binding TableCount}" />
+                <DataGridTextColumn Header="{x:Static p:Strings.movements_table_rounds}"
+                                    Binding="{Binding RoundCount}"/>
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Add a movement" Command="{Binding AddMovementCommand}"/>
+                    <MenuItem Header="{x:Static p:Strings.movements_add_movement}"
+                              Command="{Binding AddMovementCommand}"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>
 

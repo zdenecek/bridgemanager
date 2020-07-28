@@ -19,8 +19,13 @@ namespace BridgeManager.Source.ViewModel
         public ContentControl View { get => _view; }
         public string Header { get => header; set { header = value; OnPropertyChanged(); } }
 
+        protected bool IsLoaded { get => MainViewModel.IsLoaded; }
+
         protected ViewModelBase(MainWindowViewModel windowViewModel) {
             this._mainViewModel = windowViewModel;
         }
+
+      
+           
     }
 }

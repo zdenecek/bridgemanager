@@ -1,20 +1,16 @@
 ﻿using BridgeManager.Source.Component;
-using BridgeManager.Source.IO;
-using BridgeManager.Source.IO.Database;
 using BridgeManager.Source.Model;
 using BridgeManager.Source.Services;
+using BridgeManager.Source.Services.Dialog;
 using BridgeManager.Source.ViewModel.Commands;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
-using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Windows;
 
-namespace BridgeManager.Source.ViewModel {
-    public partial class MainWindowViewModel : ObservableObject
+namespace BridgeManager.Source.ViewModel
+{
+    public class MainWindowViewModel : ObservableObject
     {
 
         private IDialogService dialogService;
@@ -27,8 +23,12 @@ namespace BridgeManager.Source.ViewModel {
         public Tournament LoadedTournament { get => _loadedTournament; set { _loadedTournament = value; OnPropertyChanged(); } }
         public Session LoadedSession { get => _loadedSession; set { _loadedSession = value; OnPropertyChanged(); } }
 
+        public bool IsLoaded { get => LoadedSession != null; }
+
         public ObservableCollection<ViewModelBase> ViewModels { get => _viewModels; }
         public MainWindow MainWindow { get; private set; }
+
+        public Command OpenSetting { get; set; }
 
         public MainWindowViewModel(IDialogService dialogService, ISerializationService serializationService)
         {
@@ -38,6 +38,7 @@ namespace BridgeManager.Source.ViewModel {
             this.dialogService = dialogService;
 
             //Initialize commands before showing window because commands dont implement OnPropertyChanged()
+            OpenSetting = new DelegateCommand(dialogService.OpenSettings);
 
             MainWindow = new MainWindow()
             {

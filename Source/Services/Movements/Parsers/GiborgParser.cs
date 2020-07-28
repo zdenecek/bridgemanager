@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BridgeManager.Source.Model;
 
-namespace BridgeManager.Source.IO.MovementParsing {
+namespace BridgeManager.Source.Services.Movements.Parsers {
     public class GiborgParser : IMovementParser {
 
         public string ParserName { get; private set; }

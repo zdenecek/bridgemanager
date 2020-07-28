@@ -9,7 +9,7 @@ using BridgeManager.Source.Model;
 using System.Data;
 
 
-namespace BridgeManager.Source.IO.Database {
+namespace BridgeManager.Source.Services.Database {
 
     public enum BMTable {
         Clients, //ID (set) | Computer (must input exact case-sensitive)

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BridgeManager.Source.IO.MovementParsing {
+namespace BridgeManager.Source.Services.Movements {
     public interface IMovementParser {
 
         string ParserName { get; }

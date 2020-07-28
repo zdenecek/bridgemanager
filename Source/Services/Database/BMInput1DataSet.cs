@@ -1,4 +1,4 @@
-﻿namespace BridgeManager.Source.IO.Database {
+﻿namespace BridgeManager.Source.Services.Database {
 }
 
 namespace BridgeManager.Source.Services.Database

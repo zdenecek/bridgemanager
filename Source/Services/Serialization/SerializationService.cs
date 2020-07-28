@@ -1,5 +1,5 @@
 ﻿using BridgeManager.Source.Model;
-using BridgeManager.Source.Services.File;
+using BridgeManager.Source.Services.Files;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
-namespace BridgeManager.Source.IO
+namespace BridgeManager.Source.Services
 {
     public class SerializationService : ISerializationService
     {

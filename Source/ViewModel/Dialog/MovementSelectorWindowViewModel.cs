@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace BridgeManager.Source.ViewModel {
+namespace BridgeManager.Source.ViewModel.Dialog {
     public class MovementSelectorWindowViewModel {
 
         public IEnumerable<Movement> Movements { get; private set; }

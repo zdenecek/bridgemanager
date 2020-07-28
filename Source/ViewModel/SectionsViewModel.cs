@@ -1,17 +1,14 @@
-﻿using BridgeManager.Source.IO;
-using BridgeManager.Source.Model;
-using BridgeManager.Source.Services;
+﻿using BridgeManager.Source.Model;
+using BridgeManager.Source.Services.Dialog;
 using BridgeManager.Source.ViewModel.Commands;
 using BridgeManager.Source.Views;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace BridgeManager.Source.ViewModel {
+namespace BridgeManager.Source.ViewModel
+{
     class SectionsViewModel : ViewModelBase {
 
         private IDialogService dialogService;
@@ -28,7 +25,7 @@ namespace BridgeManager.Source.ViewModel {
             MainWindowViewModel mainWindowViewModel,
             IDialogService dialogService) : base(mainWindowViewModel) {
             _view = new SectionsControl();
-            this.Header = "Sections";
+            this.Header = Properties.Strings.sections_title;
 
             this.dialogService = dialogService;
 

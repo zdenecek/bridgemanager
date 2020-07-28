@@ -2,8 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BridgeManager.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="path_appdata" Type="System.String" Scope="Application">
+    <Setting Name="path_appdata" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\Users\zdnek\AppData\Local\BridgeMananager</Value>
+    </Setting>
+    <Setting Name="ui_language" Type="System.String" Scope="User">
+      <Value Profile="(Default)">en</Value>
     </Setting>
   </Settings>
 </SettingsFile>

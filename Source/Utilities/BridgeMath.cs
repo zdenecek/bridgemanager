@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BridgeManager.Source.IO {
+namespace BridgeManager.Source.Utilities {
     public static class BridgeMath {
 
         public static int GetNSScore(Result result) {

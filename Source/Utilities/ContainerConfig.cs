@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BridgeManager.Source.Tools
+namespace BridgeManager.Source.Utilities
 {
     public static class ContainerConfig
     {

@@ -1,7 +1,7 @@
 ﻿using BridgeManager.Source.Model;
 using System.Collections.Generic;
 
-namespace BridgeManager.Source.Services
+namespace BridgeManager.Source.Services.Dialog
 {
     public interface IDialogService
     {
@@ -9,5 +9,6 @@ namespace BridgeManager.Source.Services
         string GetExistingFilepath();
         string GetNewFilepath();
         Movement SelectMovement(IEnumerable<Movement> movements);
+        void OpenSettings();
     }
 }

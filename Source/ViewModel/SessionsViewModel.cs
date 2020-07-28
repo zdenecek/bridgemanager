@@ -1,17 +1,12 @@
-﻿using BridgeManager.Source.IO;
-using BridgeManager.Source.Model;
-using BridgeManager.Source.Services;
+﻿using BridgeManager.Source.Model;
+using BridgeManager.Source.Services.Dialog;
 using BridgeManager.Source.ViewModel.Commands;
 using BridgeManager.Source.Views;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace BridgeManager.Source.ViewModel {
+namespace BridgeManager.Source.ViewModel
+{
     public class SessionsViewModel : ViewModelBase {
 
         private IDialogService dialogService;

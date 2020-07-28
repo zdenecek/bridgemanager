@@ -1,18 +1,27 @@
 ﻿using BridgeManager.Source.Model;
-using BridgeManager.Source.ViewModel;
+using BridgeManager.Source.ViewModel.Dialog;
+using BridgeManager.Source.ViewModel.Dialog.Settings;
 //using Microsoft.Win32;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using MessageBox = System.Windows.MessageBox;
 
-namespace BridgeManager.Source.Services {
+namespace BridgeManager.Source.Services.Dialog
+{
     public class DialogService : IDialogService
     {
+        private SettingsWindowViewModel settingsWindow;
+
+        public DialogService(SettingsWindowViewModel settingsWindow)
+        {
+            this.settingsWindow = settingsWindow;
+        }
+
+        public void OpenSettings()
+        {
+            settingsWindow.SettingsWindow.Show();
+        }
 
         public Movement SelectMovement(IEnumerable<Movement> movements)
         {
