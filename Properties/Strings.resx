@@ -117,17 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="bridgemate-retrieve_results" xml:space="preserve">
+  <data name="bridgemate_retrieve_results" xml:space="preserve">
     <value>Retrieve results</value>
   </data>
-  <data name="bridgemate-send_data_to_bws" xml:space="preserve">
-    <value>Send data to BWS</value>
+  <data name="bridgemate_retrieve_results_inconsistent_db" xml:space="preserve">
+    <value>Incosistent data: </value>
   </data>
-  <data name="bridgemate-title" xml:space="preserve">
-    <value>BridgeMate</value>
+  <data name="bridgemate_retrieve_results_query_incosistent_pairs" xml:space="preserve">
+    <value>There are more pairs in the database than in the tournament. Do you want to add pairs to make up the diference?</value>
+  </data>
+  <data name="bridgemate_retrieve_results_query_incosistent_sections" xml:space="preserve">
+    <value>There are more sections in the database than in the tournament. Do you want to add sections to make up the diference?</value>
+  </data>
+  <data name="bridgemate_retrieve_results_success" xml:space="preserve">
+    <value>Results retrieved sucessfully!</value>
+  </data>
+  <data name="bridgemate_send_data_no_data" xml:space="preserve">
+    <value>Cannot send data to database, there are no results!</value>
+  </data>
+  <data name="bridgemate_send_data_success" xml:space="preserve">
+    <value>Database successfully updated!</value>
+  </data>
+  <data name="bridgemate_send_data_to_bws" xml:space="preserve">
+    <value>Send data to BWS</value>
   </data>
   <data name="bridgemate_start_BCS" xml:space="preserve">
     <value>Start BCS</value>
+  </data>
+  <data name="bridgemate_start_BCS_error" xml:space="preserve">
+    <value>Cannot start BCS! Error: </value>
+  </data>
+  <data name="bridgemate_title" xml:space="preserve">
+    <value>BridgeMate</value>
   </data>
   <data name="movements-add_movement" xml:space="preserve">
     <value>Add a movement</value>
@@ -149,6 +170,9 @@
   </data>
   <data name="movements-title" xml:space="preserve">
     <value>Movements</value>
+  </data>
+  <data name="movements_add_movement_error" xml:space="preserve">
+    <value>Error reading the movement file, exception:</value>
   </data>
   <data name="players-add_pair" xml:space="preserve">
     <value>Add a pair</value>
@@ -179,6 +203,18 @@
   </data>
   <data name="players-title" xml:space="preserve">
     <value>Players</value>
+  </data>
+  <data name="players_default_name" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="player_remove_pair_no_pair_selected" xml:space="preserve">
+    <value>Cannot remove pair - no pair is selected!</value>
+  </data>
+  <data name="player_remove_player_no_player_selected" xml:space="preserve">
+    <value>Cannot remove player - no player is selected!</value>
+  </data>
+  <data name="player_remove_player_player_in_pair" xml:space="preserve">
+    <value>Cannot remove player - player is in a pair!</value>
   </data>
   <data name="results-table-board" xml:space="preserve">
     <value>Board</value>
@@ -237,6 +273,18 @@
   <data name="scoring-title" xml:space="preserve">
     <value>Scores</value>
   </data>
+  <data name="scoring_intermediate_results" xml:space="preserve">
+    <value>Intermediate results</value>
+  </data>
+  <data name="scoring_session_results" xml:space="preserve">
+    <value>Session results</value>
+  </data>
+  <data name="scoring_table_percentage" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="scoring_table_result" xml:space="preserve">
+    <value>Result</value>
+  </data>
   <data name="sections-table-movement" xml:space="preserve">
     <value>Movement</value>
   </data>
@@ -252,8 +300,14 @@
   <data name="sections-title" xml:space="preserve">
     <value>Sections</value>
   </data>
-  <data name="sessions-table-database_file" xml:space="preserve">
-    <value>Database file</value>
+  <data name="sections_add_section" xml:space="preserve">
+    <value>Add a section</value>
+  </data>
+  <data name="sections_assign_movement" xml:space="preserve">
+    <value>Assign movement</value>
+  </data>
+  <data name="sections_remove_section" xml:space="preserve">
+    <value>Remove section</value>
   </data>
   <data name="sessions-table-name" xml:space="preserve">
     <value>Name</value>
@@ -266,6 +320,18 @@
   </data>
   <data name="sessions-title" xml:space="preserve">
     <value>Sessions</value>
+  </data>
+  <data name="sessions_add_session" xml:space="preserve">
+    <value>Add a session</value>
+  </data>
+  <data name="sessions_assign_database" xml:space="preserve">
+    <value>Assign databse file</value>
+  </data>
+  <data name="sessions_remove_session" xml:space="preserve">
+    <value>Remove session</value>
+  </data>
+  <data name="sessions_table_database_file" xml:space="preserve">
+    <value>Database file</value>
   </data>
   <data name="settings-title" xml:space="preserve">
     <value>Settings</value>
@@ -281,5 +347,11 @@
   </data>
   <data name="tournament-title" xml:space="preserve">
     <value>Tournament</value>
+  </data>
+  <data name="tournament_new" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="_tournament_not_loaded" xml:space="preserve">
+    <value>There is no open tournament!</value>
   </data>
 </root>

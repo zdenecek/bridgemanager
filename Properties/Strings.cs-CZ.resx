@@ -250,7 +250,7 @@
     <value>Počet stolů</value>
   </data>
   <data name="sections-title" xml:space="preserve">
-    <value>Počet sekcí</value>
+    <value>Sekce</value>
   </data>
   <data name="sessions-table-database_file" xml:space="preserve">
     <value>Soubor databáze</value>

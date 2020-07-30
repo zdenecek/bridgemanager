@@ -17,9 +17,10 @@ namespace BridgeManager.Source.ViewModel
         public ObservableCollection<Score> PartialScores { get => MainViewModel.LoadedSession?.IntermediateScores; }
 
         public ObservableCollection<Score> Scores { get => MainViewModel.LoadedSession?.FinalScores; }
+        public override string Header { get => Properties.Strings.scoring_title; }
 
         public ScoringViewModel(MainWindowViewModel mainController, IScoringService scoringService) : base(mainController) {
-            Header = "Scores";
+           
             _view = new ScoringControl();
             this.scoringService = scoringService;
             this.CreateScoresCommand = new DelegateCommand(CreateScores);

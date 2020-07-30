@@ -19,13 +19,13 @@ namespace BridgeManager.Source.ViewModel
         public ICommand AddSectionCommand { get; set; }
         public ICommand RemoveSectionCommand { get; set; }
         public ICommand AssignMovementToSectionCommand { get; set; }
-
+        public override string Header { get => Properties.Strings.sections_title; }
 
         public SectionsViewModel(
             MainWindowViewModel mainWindowViewModel,
             IDialogService dialogService) : base(mainWindowViewModel) {
             _view = new SectionsControl();
-            this.Header = Properties.Strings.sections_title;
+          
 
             this.dialogService = dialogService;
 

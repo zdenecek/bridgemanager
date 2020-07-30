@@ -6,46 +6,48 @@
              xmlns:local="clr-namespace:BridgeManager.Source.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
 
-        <TabControl>
-            <TabItem Header="Results">
-            <DataGrid ItemsSource="{Binding Results}"
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="110"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <DataGrid ItemsSource="{Binding Results}"
                   Style="{StaticResource DataGridStyle}" 
-                  >
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Section" 
+                  Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=results_table_section}"
                                     Binding="{Binding Section.Name}"/>
-                    <DataGridTextColumn Header="Table" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_table}"
                                     Binding="{Binding Table}"/>
-                    <DataGridTextColumn Header="Round" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_round}" 
                                     Binding="{Binding Round}"/>
-                    <DataGridTextColumn Header="Board" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_board}"
                                     Binding="{Binding Board}"/>
-                    <DataGridTextColumn Header="Pair NS" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_pairNS}" 
                                     Binding="{Binding PairNS}"/>
-                    <DataGridTextColumn Header="Pair EW" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_pairEW}"
                                     Binding="{Binding PairEW}"/>
-                    <DataGridTextColumn Header="Contract" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_contract}"
                                     Binding="{Binding Contract}"/>
-                    <DataGridTextColumn Header="Declarer" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_declarer}"
                                     Binding="{Binding NSEW}"/>
-                    <DataGridTextColumn Header="Result" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_result}" 
                                     Binding="{Binding _Result}"/>
-                    <DataGridTextColumn Header="Lead" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_lead}"
                                     Binding="{Binding LeadCard}"/>
-                    <DataGridCheckBoxColumn Header="Erased" 
+                <DataGridCheckBoxColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_erased}"
                                     Binding="{Binding Erased}"/>
-                    <DataGridTextColumn Header="Notes" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=results_table_notes}"
                                     Binding="{Binding Notes}"/>
 
-                </DataGrid.Columns>
+            </DataGrid.Columns>
 
-            </DataGrid>
+        </DataGrid>
+    </Grid>
+           
             
             
-
-        </TabItem>
-        </TabControl>
-    
 </UserControl>

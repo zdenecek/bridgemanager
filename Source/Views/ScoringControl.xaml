@@ -8,47 +8,46 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="110"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <WrapPanel>
-            <Button Height="30" Width="100" Margin="5" 
-                    Content="Create Scores" 
+        <WrapPanel HorizontalAlignment="Center">
+            <Button Content="{Binding Source={StaticResource Strings}, Path=scoring_create_scores}" 
                     Command="{Binding CreateScoresCommand}"/>
 
             
                 
         </WrapPanel>
         <TabControl Grid.Column="1">
-            <TabItem Header="Intermediate">
+            <TabItem Header="{Binding Source={StaticResource Strings}, Path=scoring_intermediate_results}">
                 <DataGrid ItemsSource="{Binding PartialScores}"
                   Style="{StaticResource DataGridStyle}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Player" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=scoring_table_player}"
                                     Binding="{Binding PlayerUnit}"/>
-                        <DataGridTextColumn Header="Opponent" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=scoring_table_opponent}"
                                     Binding="{Binding OpponentPlayerUnit}"/>
 
 
-                        <DataGridTextColumn Header="Section" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=results_table_section}"
                                     Binding="{Binding  AsociatedResult.Section.Name}"/>
-                        <DataGridTextColumn Header="Table" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=results_table_table}" 
                                     Binding="{Binding AsociatedResult.Table}"/>
-                        <DataGridTextColumn Header="Round" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=results_table_round}"
                                     Binding="{Binding AsociatedResult.Round}"/>
-                        <DataGridTextColumn Header="Board" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=results_table_board}"
                                     Binding="{Binding AsociatedResult.Board}"/>
-                        <DataGridTextColumn Header="Pair NS" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=results_table_pairNS}"
                                     Binding="{Binding AsociatedResult.PairNS}"/>
-                        <DataGridTextColumn Header="Pair EW" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=results_table_pairEW}" 
                                     Binding="{Binding AsociatedResult.PairEW}"/>
-                        <DataGridTextColumn Header="Contract" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=scoring_table_result}" 
                                     Binding="{Binding AsociatedResult.Short}"/>
 
 
-                        <DataGridTextColumn Header="Points" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=scoring_table_points}"
                                     Binding="{Binding Points}"/>
-                        <DataGridTextColumn Header="Maximum" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=scoring_table_maximum_points}"
                                     Binding="{Binding MaxPoints}"/>
 
 
@@ -60,14 +59,14 @@
                 <DataGrid ItemsSource="{Binding Scores}"
                           Style="{StaticResource DataGridStyle}" >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Player" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=scoring_table_player}"
                                     Binding="{Binding PlayerUnit.Name}"/>
-                         
-                        <DataGridTextColumn Header="Points" 
+
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=scoring_table_points}"
                                     Binding="{Binding Points}"/>
-                        <DataGridTextColumn Header="Maximum" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=scoring_table_maximum_points}"
                                     Binding="{Binding MaxPoints}"/>
-                        <DataGridTextColumn Header="Percent" 
+                        <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=scoring_table_percentage}" 
                                     Binding="{Binding Percentage}"/>
 
                     </DataGrid.Columns>

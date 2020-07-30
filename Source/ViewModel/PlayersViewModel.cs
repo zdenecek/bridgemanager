@@ -1,4 +1,5 @@
-﻿using BridgeManager.Source.Model;
+﻿using BridgeManager.Source.Cultures;
+using BridgeManager.Source.Model;
 using BridgeManager.Source.Services;
 using BridgeManager.Source.ViewModel.Commands;
 using BridgeManager.Source.Views;
@@ -10,6 +11,7 @@ using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 
 namespace BridgeManager.Source.ViewModel {
@@ -26,10 +28,11 @@ namespace BridgeManager.Source.ViewModel {
         public Command AddPairCommand { get; private set; }
         public Command RemovePairCommand { get; private set; }
 
+        public override string Header { get => Properties.Strings.players_title; }
+
         public PlayersViewModel(MainWindowViewModel mainController) : base(mainController) {
             PlayersControl view = new PlayersControl();
             this._view = view;
-            this.Header = Properties.Strings.players_title;
 
             this.AddPlayerCommand = new DelegateCommand(() => AddPlayer());
             this.RemovePlayerCommand = new DelegateCommand<Player>(RemovePlayer);
@@ -43,7 +46,7 @@ namespace BridgeManager.Source.ViewModel {
 
             if(IsLoaded == false)
             {
-                Console.WriteLine("No loaded tournament;");
+                Console.WriteLine(Properties.Strings._tournament_not_loaded);
                 return null;
             }
 
@@ -51,22 +54,21 @@ namespace BridgeManager.Source.ViewModel {
 
             Player player = new Player(tournament.Players.Count + 1)
             {
-                Name = "unknown_player"
+                Name = Properties.Strings.players_default_name
             };
             tournament.Players.Add(player);
             return player;
         }
 
         public void RemovePlayer(Player player) {
-            Console.WriteLine("RemoveP");
-
+            
             if (IsLoaded == false)
             {
-                Console.WriteLine("No loaded tournament;");
+                Console.WriteLine(Properties.Strings._tournament_not_loaded);
                 return;
             }
             if (player == null) {
-                Console.WriteLine("Remove player: No player selected");
+                Console.WriteLine(Properties.Strings.player_remove_player_no_player_selected);
                 return;
             }
             var tournament = MainViewModel.LoadedTournament;
@@ -74,7 +76,7 @@ namespace BridgeManager.Source.ViewModel {
             if (tournament.Pairs.Where(pair => pair.Player1.Equals(player) || pair.Player2.Equals(player))
                 .Count() != 0)
             {
-                Console.WriteLine("Remove player: Cannot remove player in pair");
+                Console.WriteLine(Properties.Strings.player_remove_player_player_in_pair);
                 return;
             }
                          
@@ -91,7 +93,7 @@ namespace BridgeManager.Source.ViewModel {
 
             if (IsLoaded == false)
             {
-                Console.WriteLine("No loaded tournament;");
+                Console.WriteLine(Properties.Strings._tournament_not_loaded);
                 return null;
             }
             var tournament = MainViewModel.LoadedTournament;
@@ -111,12 +113,12 @@ namespace BridgeManager.Source.ViewModel {
 
             if (IsLoaded == false)
             {
-                Console.WriteLine("No loaded tournament;");
+                Console.WriteLine(Properties.Strings._tournament_not_loaded);
                 return;
             }
             var tournament = MainViewModel.LoadedTournament;
             if (pair == null) {
-                Console.WriteLine("Remove pair: No Pair Selected");
+                Console.WriteLine(Properties.Strings.player_remove_pair_no_pair_selected);
                 return;
             }
 
@@ -130,41 +132,5 @@ namespace BridgeManager.Source.ViewModel {
                 p.Number -= 1;
             }
         }
-        
-        //Not implemented yet
-        public List<Pair> CreatePairs(IList pls) {
-            throw new NotImplementedException("Creating pairs not implemented yet");
-            /*List<Pair> pairs = new List<Pair>();
-            if (pls != null) {
-
-
-                using (var players = (from p in pls.Cast<Player>()
-                                      where p.Pair == null
-                                      orderby p.Number
-                                      select p).GetEnumerator()) {
-
-                    Tournament tournament = MainViewModel.LoadedTournament;
-
-                    int number = tournament.Pairs.Count + 1;
-
-                    Player curr;
-
-                    do {
-                        curr = players.Current;
-                        if (players.MoveNext()) {
-                            Pair pair = new Pair(number++) {
-                                Player1 = curr,
-                                Player2 = players.Current
-                            };
-                            pairs.Add(pair);
-                            tournament.Pairs.Add(pair);
-                        }
-                    } while (players.MoveNext());
-                }
-            }
-            return pairs;
-            */
-        }
-
     }
 }

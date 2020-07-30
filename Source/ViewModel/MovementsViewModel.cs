@@ -21,6 +21,8 @@ namespace BridgeManager.Source.ViewModel
 
         public Command AddMovementCommand { get; set; }
 
+        public override string Header { get => Properties.Strings.movements_title; }
+
         public MovementsViewModel(
             MainWindowViewModel mainController, 
             IMovementsService movementsService,
@@ -29,8 +31,7 @@ namespace BridgeManager.Source.ViewModel
         {
             _movements = new ObservableCollection<Movement>();
             _view = new MovementsControl();
-            Header = Properties.Strings.movements_title;
-
+          
             this.movementsService = movementsService;
             this.fileService = fileService;
             this.dialogService = dialogService;
@@ -47,9 +48,10 @@ namespace BridgeManager.Source.ViewModel
 
         }
 
-        //IMPLEMENT ASYNC LATER
         public async Task AddMovement(string filepath) {
 
+            //@TODO add checks
+            //@TODO implement async
             
             string loadedText;
 
@@ -57,7 +59,7 @@ namespace BridgeManager.Source.ViewModel
                 loadedText = await fileService.ParseTextFile(filepath);
             }
             catch (Exception e) {
-                Console.WriteLine($"Error reading the movement file{filepath}, exception:{e.Message}");
+                Console.WriteLine(Properties.Strings.movements_add_movement_error + e.Message);
                 return;
             }
 

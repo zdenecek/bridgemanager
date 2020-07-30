@@ -91,24 +91,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BMInput_with_resultsDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BMInput_with_resultsDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Strings.cs-CZ.Designer.cs">
       <DependentUpon>Strings.cs-CZ.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Properties\Settings.cs" />
     <Compile Include="Properties\Strings.Designer.cs">
-      <DependentUpon>Strings.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.cs" />
+    <Compile Include="Source\Cultures\CultureResources.cs" />
     <Compile Include="Source\Services\Database\BCSService.cs" />
     <Compile Include="Source\Services\Database\BMInput1DataSet.cs">
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
@@ -125,8 +120,6 @@
     <Compile Include="Source\Services\Serialization\ISerializationService.cs" />
     <Compile Include="Source\Services\Movements\IMovementsService.cs" />
     <Compile Include="Source\Services\Serialization\SerializationService.cs" />
-    <Compile Include="Source\Services\Settings\ISettingsService.cs" />
-    <Compile Include="Source\Services\Settings\SettingsService.cs" />
     <Compile Include="Source\Utilities\ContainerConfig.cs" />
     <Compile Include="Source\Utilities\BridgeMath.cs" />
     <Compile Include="Source\Services\Movements\IMovementParser.cs" />
@@ -139,6 +132,7 @@
     <Compile Include="Source\Model\Score.cs" />
     <Compile Include="Source\Commands\Command.cs" />
     <Compile Include="Source\Commands\DelegateCommand.cs" />
+    <Compile Include="Source\Utilities\SettingsLoader.cs" />
     <Compile Include="Source\ViewModel\Dialog\Settings\SettingsWindowViewModel.cs" />
     <Compile Include="Source\ViewModel\Dialog\Settings\SettingsCategory.cs" />
     <Compile Include="Source\ViewModel\Dialog\Settings\SettingsItem.cs" />
@@ -178,6 +172,14 @@
     <Compile Include="Source\Views\SessionsControl.xaml.cs">
       <DependentUpon>SessionsControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Source\Cultures\CulturesResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Styles\StylesDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Source\Views\Dialog\SettingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -272,18 +274,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="BMInput1.bws" />
-    <None Include="BMInput_with_resultsDataSet.xsc">
-      <DependentUpon>BMInput_with_resultsDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="BMInput_with_resultsDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BMInput_with_resultsDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BMInput_with_resultsDataSet.xss">
-      <DependentUpon>BMInput_with_resultsDataSet.xsd</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Source\Services\Database\BMInput1DataSet.xsc">
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>

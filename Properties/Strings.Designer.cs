@@ -61,11 +61,74 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is no open tournament!.
+        /// </summary>
+        public static string _tournament_not_loaded {
+            get {
+                return ResourceManager.GetString("_tournament_not_loaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retrieve results.
         /// </summary>
         public static string bridgemate_retrieve_results {
             get {
-                return ResourceManager.GetString("bridgemate-retrieve_results", resourceCulture);
+                return ResourceManager.GetString("bridgemate_retrieve_results", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incosistent data: .
+        /// </summary>
+        public static string bridgemate_retrieve_results_inconsistent_db {
+            get {
+                return ResourceManager.GetString("bridgemate_retrieve_results_inconsistent_db", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are more pairs in the database than in the tournament. Do you want to add pairs to make up the diference?.
+        /// </summary>
+        public static string bridgemate_retrieve_results_query_incosistent_pairs {
+            get {
+                return ResourceManager.GetString("bridgemate_retrieve_results_query_incosistent_pairs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are more sections in the database than in the tournament. Do you want to add sections to make up the diference?.
+        /// </summary>
+        public static string bridgemate_retrieve_results_query_incosistent_sections {
+            get {
+                return ResourceManager.GetString("bridgemate_retrieve_results_query_incosistent_sections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Results retrieved sucessfully!.
+        /// </summary>
+        public static string bridgemate_retrieve_results_success {
+            get {
+                return ResourceManager.GetString("bridgemate_retrieve_results_success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot send data to database, there are no results!.
+        /// </summary>
+        public static string bridgemate_send_data_no_data {
+            get {
+                return ResourceManager.GetString("bridgemate_send_data_no_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database successfully updated!.
+        /// </summary>
+        public static string bridgemate_send_data_success {
+            get {
+                return ResourceManager.GetString("bridgemate_send_data_success", resourceCulture);
             }
         }
         
@@ -74,7 +137,7 @@ namespace BridgeManager.Properties {
         /// </summary>
         public static string bridgemate_send_data_to_bws {
             get {
-                return ResourceManager.GetString("bridgemate-send_data_to_bws", resourceCulture);
+                return ResourceManager.GetString("bridgemate_send_data_to_bws", resourceCulture);
             }
         }
         
@@ -88,11 +151,20 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot start BCS! Error: .
+        /// </summary>
+        public static string bridgemate_start_BCS_error {
+            get {
+                return ResourceManager.GetString("bridgemate_start_BCS_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BridgeMate.
         /// </summary>
         public static string bridgemate_title {
             get {
-                return ResourceManager.GetString("bridgemate-title", resourceCulture);
+                return ResourceManager.GetString("bridgemate_title", resourceCulture);
             }
         }
         
@@ -102,6 +174,15 @@ namespace BridgeManager.Properties {
         public static string movements_add_movement {
             get {
                 return ResourceManager.GetString("movements-add_movement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error reading the movement file, exception:.
+        /// </summary>
+        public static string movements_add_movement_error {
+            get {
+                return ResourceManager.GetString("movements_add_movement_error", resourceCulture);
             }
         }
         
@@ -160,6 +241,33 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot remove pair - no pair is selected!.
+        /// </summary>
+        public static string player_remove_pair_no_pair_selected {
+            get {
+                return ResourceManager.GetString("player_remove_pair_no_pair_selected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot remove player - no player is selected!.
+        /// </summary>
+        public static string player_remove_player_no_player_selected {
+            get {
+                return ResourceManager.GetString("player_remove_player_no_player_selected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot remove player - player is in a pair!.
+        /// </summary>
+        public static string player_remove_player_player_in_pair {
+            get {
+                return ResourceManager.GetString("player_remove_player_player_in_pair", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add a pair.
         /// </summary>
         public static string players_add_pair {
@@ -174,6 +282,15 @@ namespace BridgeManager.Properties {
         public static string players_add_player {
             get {
                 return ResourceManager.GetString("players-add_player", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ?.
+        /// </summary>
+        public static string players_default_name {
+            get {
+                return ResourceManager.GetString("players_default_name", resourceCulture);
             }
         }
         
@@ -376,6 +493,24 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Intermediate results.
+        /// </summary>
+        public static string scoring_intermediate_results {
+            get {
+                return ResourceManager.GetString("scoring_intermediate_results", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Session results.
+        /// </summary>
+        public static string scoring_session_results {
+            get {
+                return ResourceManager.GetString("scoring_session_results", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum.
         /// </summary>
         public static string scoring_table_maximum_points {
@@ -390,6 +525,15 @@ namespace BridgeManager.Properties {
         public static string scoring_table_opponent {
             get {
                 return ResourceManager.GetString("scoring-table-opponent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to %.
+        /// </summary>
+        public static string scoring_table_percentage {
+            get {
+                return ResourceManager.GetString("scoring_table_percentage", resourceCulture);
             }
         }
         
@@ -412,11 +556,47 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Result.
+        /// </summary>
+        public static string scoring_table_result {
+            get {
+                return ResourceManager.GetString("scoring_table_result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scores.
         /// </summary>
         public static string scoring_title {
             get {
                 return ResourceManager.GetString("scoring-title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a section.
+        /// </summary>
+        public static string sections_add_section {
+            get {
+                return ResourceManager.GetString("sections_add_section", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign movement.
+        /// </summary>
+        public static string sections_assign_movement {
+            get {
+                return ResourceManager.GetString("sections_assign_movement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove section.
+        /// </summary>
+        public static string sections_remove_section {
+            get {
+                return ResourceManager.GetString("sections_remove_section", resourceCulture);
             }
         }
         
@@ -466,11 +646,38 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a session.
+        /// </summary>
+        public static string sessions_add_session {
+            get {
+                return ResourceManager.GetString("sessions_add_session", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign databse file.
+        /// </summary>
+        public static string sessions_assign_database {
+            get {
+                return ResourceManager.GetString("sessions_assign_database", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove session.
+        /// </summary>
+        public static string sessions_remove_session {
+            get {
+                return ResourceManager.GetString("sessions_remove_session", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database file.
         /// </summary>
         public static string sessions_table_database_file {
             get {
-                return ResourceManager.GetString("sessions-table-database_file", resourceCulture);
+                return ResourceManager.GetString("sessions_table_database_file", resourceCulture);
             }
         }
         
@@ -516,6 +723,15 @@ namespace BridgeManager.Properties {
         public static string settings_title {
             get {
                 return ResourceManager.GetString("settings-title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        public static string tournament_new {
+            get {
+                return ResourceManager.GetString("tournament_new", resourceCulture);
             }
         }
         

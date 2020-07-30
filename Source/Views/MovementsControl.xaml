@@ -13,19 +13,19 @@
                   Style="{StaticResource DataGridStyle}">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="{x:Static p:Strings.movements_table_name}" 
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=movements_table_name}" 
                                     Binding="{Binding Name}"
                                     IsReadOnly="False"/>
-                <DataGridTextColumn Header="{x:Static p:Strings.movements_table_description}"
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=movements_table_description}"
                                     Binding="{Binding Description}"/>
-                <DataGridTextColumn Header="{x:Static p:Strings.movements_table_tables}"
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=movements_table_tables}"
                                     Binding="{Binding TableCount}" />
-                <DataGridTextColumn Header="{x:Static p:Strings.movements_table_rounds}"
+                <DataGridTextColumn  Header="{Binding Source={StaticResource Strings}, Path=movements_table_rounds}"
                                     Binding="{Binding RoundCount}"/>
             </DataGrid.Columns>
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="{x:Static p:Strings.movements_add_movement}"
+                    <MenuItem  Header="{Binding Source={StaticResource Strings}, Path=movements_add_movement}"
                               Command="{Binding AddMovementCommand}"/>
                 </ContextMenu>
             </DataGrid.ContextMenu>

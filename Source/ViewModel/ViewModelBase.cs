@@ -1,4 +1,5 @@
 ﻿using BridgeManager.Source.Component;
+using BridgeManager.Source.Cultures;
 using BridgeManager.Source.Model;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace BridgeManager.Source.ViewModel
 {
@@ -13,16 +15,17 @@ namespace BridgeManager.Source.ViewModel
 
         private readonly MainWindowViewModel _mainViewModel;
         protected ContentControl _view;
-        private String header;
 
         public MainWindowViewModel MainViewModel { get => _mainViewModel; }
         public ContentControl View { get => _view; }
-        public string Header { get => header; set { header = value; OnPropertyChanged(); } }
-
+        public abstract string Header { get; }
+            
         protected bool IsLoaded { get => MainViewModel.IsLoaded; }
 
         protected ViewModelBase(MainWindowViewModel windowViewModel) {
             this._mainViewModel = windowViewModel;
+
+            CultureResources.CultureChanged += (s, e) => OnPropertyChanged("Header");
         }
 
       

@@ -17,11 +17,13 @@ namespace BridgeManager.Source.ViewModel
         public Command RemoveSessionCommand { get; set; }
         public Command AssignDatabaseFilepathCommand { get; set; }
 
+        public override string Header { get => Properties.Strings.sessions_title; }
+
         public SessionsViewModel(MainWindowViewModel mainWindowViewModel,
             IDialogService dialogService) : base(mainWindowViewModel)
         {
             _view = new SessionsControl();
-            Header = "Sessions";
+            
 
             this.dialogService = dialogService;
 

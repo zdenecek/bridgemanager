@@ -28,7 +28,7 @@ namespace BridgeManager.Source.ViewModel
         public ObservableCollection<ViewModelBase> ViewModels { get => _viewModels; }
         public MainWindow MainWindow { get; private set; }
 
-        public Command OpenSetting { get; set; }
+        public Command OpenSettings { get; set; }
 
         public MainWindowViewModel(IDialogService dialogService, ISerializationService serializationService)
         {
@@ -38,7 +38,7 @@ namespace BridgeManager.Source.ViewModel
             this.dialogService = dialogService;
 
             //Initialize commands before showing window because commands dont implement OnPropertyChanged()
-            OpenSetting = new DelegateCommand(dialogService.OpenSettings);
+            OpenSettings = new DelegateCommand(dialogService.OpenSettings);
 
             MainWindow = new MainWindow()
             {
@@ -95,7 +95,7 @@ namespace BridgeManager.Source.ViewModel
 
             if (list.Count(pl => pl.Number == unit.Number) > 1)
             {
-                var dialog = dialogService.GetYesOrNo($"A {s} of the same number already exists, do you want to swap numbers?");
+                var dialog = dialogService.GetYesOrNo($"A {s} of the same number already exists, do you want to swap numbers?"); //@TODO localize
                 switch (dialog)
                 {
                     case DialogResult.Cancel:

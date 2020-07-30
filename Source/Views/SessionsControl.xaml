@@ -15,19 +15,17 @@
 
         <DataGrid Name="dgSessions"
                   ItemsSource="{Binding Sessions}"
-                  Margin="10,10,10,10" 
-                  AutoGenerateColumns="False" 
-                  CanUserAddRows="False">
+                  Style="{StaticResource DataGridStyle}">
 
             <DataGrid.ContextMenu>
                 <ContextMenu>
-                    <MenuItem Header="Add a session" 
+                    <MenuItem Header="{Binding Source={StaticResource Strings}, Path=sessions_add_session}" 
                               Command="{Binding AddSessionCommand}"/>
-                    <MenuItem Header="Remove session" 
+                    <MenuItem Header="{Binding Source={StaticResource Strings}, Path=sessions_remove_session}"
                               Command="{Binding RemoveSessionCommand}"
                               CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, 
                                                          Path=PlacementTarget.SelectedItem}"/>
-                    <MenuItem Header="Assign database" 
+                        <MenuItem Header="{Binding Source={StaticResource Strings}, Path=sessions_assign_database}"
                               Command="{Binding AssignDatabaseFilepathCommand}"
                               CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ContextMenu}}, 
                                                          Path=PlacementTarget.SelectedItem}"/>
@@ -35,10 +33,16 @@
             </DataGrid.ContextMenu>
             <DataGrid.Columns>
 
-                <DataGridTextColumn Header="Number"  Binding="{Binding Number}"/>
-                <DataGridTextColumn Header="Name"  Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Sections" Binding="{Binding Sections.Count}" IsReadOnly="True"/>
-                <DataGridTextColumn Header="Database file" Binding="{Binding DatabaseFilepath }" IsReadOnly="True"/>
+                <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=sessions_table_number}"
+                                    Binding="{Binding Number}"/>
+                <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=sessions_table_name}"
+                                    Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=sessions_table_sections}"
+                                    Binding="{Binding Sections.Count}"
+                                    IsReadOnly="True"/>
+                <DataGridTextColumn Header="{Binding Source={StaticResource Strings}, Path=sessions_table_database_file}"
+                                    Binding="{Binding DatabaseFilepath }" 
+                                    IsReadOnly="True"/>
 
             </DataGrid.Columns>
         </DataGrid>

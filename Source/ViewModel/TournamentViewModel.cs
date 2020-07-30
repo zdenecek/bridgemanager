@@ -19,8 +19,10 @@ namespace BridgeManager.Source.ViewModel
         public Command SaveAsCommand { get; private set; }
         public Command SaveCommand { get; private set; }
 
+        public override string Header { get => Properties.Strings.tournament_title; }
+
         public TournamentViewModel(MainWindowViewModel mainController, IDialogService dialog, ISerializationService serialization) : base(mainController) {
-            Header = "Tournament";
+           
             _view = new TournamentControl();
                         
             xmlService = serialization;

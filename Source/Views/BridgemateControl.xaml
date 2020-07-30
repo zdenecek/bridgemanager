@@ -11,11 +11,11 @@
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Left">
             <Button Command="{Binding SendCurrentSessionCommand}"
-                    Content="{x:Static p:Strings.bridgemate_send_data_to_bws}" />
+                     Content="{Binding Source={StaticResource Strings}, Path=bridgemate_send_data_to_bws}" />
             <Button Command="{Binding StartBCSCommand}" 
-                    Content="{x:Static p:Strings.bridgemate_start_BCS}"/>
+                    Content="{Binding Source={StaticResource Strings}, Path=bridgemate_start_BCS}"/>
             <Button Command="{Binding RetrieveResultsCommand}"
-                    Content="{x:Static p:Strings.bridgemate_retrieve_results}"/>
+                    Content="{Binding Source={StaticResource Strings}, Path=bridgemate_retrieve_results}"/>
         </StackPanel>
     </Grid>
 </UserControl>

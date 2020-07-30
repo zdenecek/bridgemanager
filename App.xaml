@@ -8,24 +8,13 @@
 
 
     <Application.Resources>
-        <Style x:Key="DataGridStyle" TargetType="DataGrid">
-            <Setter Property="AutoGenerateColumns" Value="False" />
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="SelectionMode" Value="Single" />
-            <Setter Property="CanUserReorderColumns" Value="False"/>
-            <Setter Property="CanUserAddRows" Value="False"/>
-            <Setter Property="IsReadOnly" Value="True" />
-            
-        </Style>
 
-        <Style TargetType="Button">
-            <Setter Property="Height"   Value="30" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="Margin" Value="5" />
-            <Setter Property="Background" Value="AliceBlue"/>
-            
-
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Source\Styles\StylesDictionary.xaml"/>
+                <ResourceDictionary Source="Source\Cultures\CulturesResourceDictionary.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
 
     </Application.Resources>
 </Application>

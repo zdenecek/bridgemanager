@@ -5,23 +5,17 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BridgeManager.Source.Views"
              mc:Ignorable="d" 
-             xmlns:p ="clr-namespace:BridgeManager.Properties"
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.Resources>
-        <p:Strings x:Key="Strings"></p:Strings>
-    </UserControl.Resources>
     
     <Grid>
         <WrapPanel Orientation="Vertical">
-            <Button Height="30" Width="100" Margin="5" Content="Open" 
+
+            <Button Content="{Binding Source={StaticResource Strings}, Path=tournament_open}" 
                     Command="{Binding OpenCommand}"/>
-            <Button Height="30" Width="100" Margin="5"
-                    Command="{Binding NewCommand}" > New</Button>
-            <Button Height="30" Width="100" Margin="5"
-                    Command="{Binding SaveAsCommand}"
-                    Content="{x:Static p:Strings.tournament_save_as}" />
-
-
+            <Button Content="{Binding Source={StaticResource Strings}, Path=tournament_new}"
+                    Command="{Binding NewCommand}" />
+            <Button Command="{Binding SaveAsCommand}"
+                    Content="{Binding Source={StaticResource Strings}, Path=tournament_save_as}" />
         </WrapPanel>
     </Grid>
 </UserControl>

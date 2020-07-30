@@ -1,19 +1,10 @@
-﻿using BridgeManager.Source.Model;
-using BridgeManager.Source.Services.Settings;
+﻿using BridgeManager.Source.Utilities;
 using BridgeManager.Source.ViewModel.Commands;
-using BridgeManager.Source.ViewModel.Dialog.Settings;
-using BridgeManager.Source.Views;
 using BridgeManager.Source.Views.Dialog;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
-namespace BridgeManager.Source.ViewModel.Dialog.Settings {
+namespace BridgeManager.Source.ViewModel.Dialog.Settings
+{
     public class SettingsWindowViewModel
     {
         public ObservableCollection<SettingsCategory> Categories { get; }
@@ -26,9 +17,9 @@ namespace BridgeManager.Source.ViewModel.Dialog.Settings {
 
 
 
-        public SettingsWindowViewModel(ISettingsService settingsLoader) {
+        public SettingsWindowViewModel() {
 
-            var settings = settingsLoader.LoadSettings();
+            var settings = SettingsLoader.LoadSettings();
             Categories = new ObservableCollection<SettingsCategory>(settings);
             
 
@@ -52,8 +43,6 @@ namespace BridgeManager.Source.ViewModel.Dialog.Settings {
 
         public void Hide()
         {
-
-            Console.WriteLine(Thread.CurrentThread.CurrentUICulture + ""+ Thread.CurrentThread.CurrentCulture);
             SettingsWindow.Hide();
         }
         

@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using BridgeManager.Source.Cultures;
 using BridgeManager.Source.Services;
 using BridgeManager.Source.Utilities;
 using BridgeManager.Source.ViewModel;
@@ -16,18 +17,11 @@ namespace BridgeManager
         private MainWindowViewModel mainWindowViewModel;
 
 
-        public static void ChangeCulture(string culture)
-        {
-            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(culture);
-            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture);
-        }
-
         private void Application_Startup(object sender, StartupEventArgs e) {
 
-            ChangeCulture(BridgeManager.Properties.Settings.Default.ui_language);
-            BridgeManager.Properties.Strings.Culture = new System.Globalization.CultureInfo(BridgeManager.Properties.Settings.Default.ui_language);
-
-             var container = ContainerConfig.Configure();
+            CultureResources.ChangeCulture(BridgeManager.Properties.Settings.Default.ui_language);
+          
+            var container = ContainerConfig.Configure();
 
             var scope = container.BeginLifetimeScope();
             ConfigureNestedViewModels(scope);
@@ -39,9 +33,7 @@ namespace BridgeManager
             //----------------------------------------------------------
                         
             Console.WriteLine("Welcome to BridgeManager v. 0.1");
-            Console.WriteLine("Current language is:" + Thread.CurrentThread.CurrentUICulture);
-            Console.WriteLine(BridgeManager.Properties.Strings.bridgemate_retrieve_results);
-
+            
             defaultTest(scope);
         }
 
@@ -57,7 +49,7 @@ namespace BridgeManager
         {
             scope.Resolve<TournamentViewModel>().Open(@"c:\Users\zdnek\ME\Bridge\BridgeManager\testfiles\tx.json");
             scope.Resolve<ScoringViewModel>().CreateScores();
-            Console.WriteLine(Thread.CurrentThread.CurrentCulture.ToString() + Thread.CurrentThread.CurrentUICulture.ToString());
+          
         }
 
         private void ConfigureNestedViewModels(ILifetimeScope scope)
