@@ -64,7 +64,7 @@ namespace BridgeManager
             mainController.ViewModels.Add(scope.Resolve<BridgemateViewModel>());
             mainController.ViewModels.Add(scope.Resolve<ScoringViewModel>());
             mainController.ViewModels.Add(scope.Resolve<ResultsViewModel>());
-
+            mainController.ViewModels.Add(scope.Resolve<ExportsViewModel>());
             return;
         }
 

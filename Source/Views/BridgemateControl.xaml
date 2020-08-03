@@ -10,10 +10,13 @@
     <Grid>
         <StackPanel Orientation="Vertical"
                     HorizontalAlignment="Left">
+            
             <Button Command="{Binding SendCurrentSessionCommand}"
                      Content="{Binding Source={StaticResource Strings}, Path=bridgemate_send_data_to_bws}" />
+            
             <Button Command="{Binding StartBCSCommand}" 
                     Content="{Binding Source={StaticResource Strings}, Path=bridgemate_start_BCS}"/>
+            
             <Button Command="{Binding RetrieveResultsCommand}"
                     Content="{Binding Source={StaticResource Strings}, Path=bridgemate_retrieve_results}"/>
         </StackPanel>

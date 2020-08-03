@@ -136,6 +136,7 @@
     <Compile Include="Source\ViewModel\Dialog\Settings\SettingsWindowViewModel.cs" />
     <Compile Include="Source\ViewModel\Dialog\Settings\SettingsCategory.cs" />
     <Compile Include="Source\ViewModel\Dialog\Settings\SettingsItem.cs" />
+    <Compile Include="Source\ViewModel\ExportsViewModel.cs" />
     <Compile Include="Source\ViewModel\ResultsViewModel.cs" />
     <Compile Include="Source\ViewModel\TournamentViewModel.cs" />
     <Compile Include="Source\ViewModel\ScoringViewModel.cs" />
@@ -144,6 +145,9 @@
     <Compile Include="Source\ViewModel\SessionsViewModel.cs" />
     <Compile Include="Source\Views\Dialog\SettingsWindow.xaml.cs">
       <DependentUpon>SettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Views\ExportsControl.xaml.cs">
+      <DependentUpon>ExportsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Source\Views\ResultsControl.xaml.cs">
       <DependentUpon>ResultsControl.xaml</DependentUpon>
@@ -181,6 +185,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Source\Views\Dialog\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Source\Views\ExportsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,6 +282,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Files\klub3.DAT" />
     <None Include="packages.config" />
     <None Include="Source\Services\Database\BMInput1DataSet.xsc">
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>

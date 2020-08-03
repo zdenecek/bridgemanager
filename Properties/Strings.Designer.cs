@@ -70,6 +70,15 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error connecting to database:.
+        /// </summary>
+        public static string bridgemate_database_error {
+            get {
+                return ResourceManager.GetString("bridgemate_database_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Retrieve results.
         /// </summary>
         public static string bridgemate_retrieve_results {
@@ -165,6 +174,15 @@ namespace BridgeManager.Properties {
         public static string bridgemate_title {
             get {
                 return ResourceManager.GetString("bridgemate_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export.
+        /// </summary>
+        public static string exports_title {
+            get {
+                return ResourceManager.GetString("exports_title", resourceCulture);
             }
         }
         
@@ -286,7 +304,7 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ?.
+        ///   Looks up a localized string similar to unknown.
         /// </summary>
         public static string players_default_name {
             get {
@@ -493,6 +511,15 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot create scores, error:.
+        /// </summary>
+        public static string scoring_create_scores_error {
+            get {
+                return ResourceManager.GetString("scoring_create_scores_error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Intermediate results.
         /// </summary>
         public static string scoring_intermediate_results {
@@ -592,11 +619,38 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot assign movement  - no section is selected..
+        /// </summary>
+        public static string sections_assign_movement_no_section_selected {
+            get {
+                return ResourceManager.GetString("sections_assign_movement_no_section_selected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Remove section.
         /// </summary>
         public static string sections_remove_section {
             get {
                 return ResourceManager.GetString("sections_remove_section", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot remove section..
+        /// </summary>
+        public static string sections_remove_section_couldnt_remove {
+            get {
+                return ResourceManager.GetString("sections_remove_section_couldnt_remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot remove section - no section is selected..
+        /// </summary>
+        public static string sections_remove_section_no_section_selected {
+            get {
+                return ResourceManager.GetString("sections_remove_section_no_section_selected", resourceCulture);
             }
         }
         
@@ -669,6 +723,15 @@ namespace BridgeManager.Properties {
         public static string sessions_remove_session {
             get {
                 return ResourceManager.GetString("sessions_remove_session", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot remove loaded session!.
+        /// </summary>
+        public static string sessions_remove_sesssion_cannot_remove_loaded {
+            get {
+                return ResourceManager.GetString("sessions_remove_sesssion_cannot_remove_loaded", resourceCulture);
             }
         }
         

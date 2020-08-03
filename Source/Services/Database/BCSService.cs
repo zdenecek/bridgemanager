@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.OleDb;
 
 namespace BridgeManager.Source.Services.Database
 {
@@ -166,6 +167,10 @@ namespace BridgeManager.Source.Services.Database
             {
                 throw;
             }
+            catch (OleDbException)
+            {
+                throw;
+            }
             finally
             {
                 db.Close();
@@ -174,21 +179,31 @@ namespace BridgeManager.Source.Services.Database
 
         private void CheckDBConsistentWithModel(Session session, Tournament tournament)
         {
-            var pairsInDB = db.Data.ReceivedData.Max(r => Math.Max(r.PairEW, r.PairNS)) ;
-            var pairsInModel = tournament.Pairs.Count;
-            if (pairsInDB > pairsInModel)
-                throw new InconsistentModelException(
-                    InconsistentModelException.ModelDBInconsistencyType.Pairs,
-                    pairsInDB,
-                    pairsInModel);
+            try
+            {
+                var pairsInDB = db.Data.ReceivedData.Max(r => Math.Max(r.PairEW, r.PairNS));
+                var pairsInModel = tournament.Pairs.Count;
 
-            var sectionsInDB = db.Data.ReceivedData.Max(r => r.Section);
-            var sectionsInModel = session.Sections.Count;
-            if (sectionsInDB > sectionsInModel) 
-                throw new InconsistentModelException(
-                    InconsistentModelException.ModelDBInconsistencyType.Sections,
-                    sectionsInDB,
-                    sectionsInModel);
+                check(pairsInModel, pairsInDB, InconsistentModelException.ModelDBInconsistencyType.Pairs);
+
+                var sectionsInDB = db.Data.ReceivedData.Max(r => r.Section);
+                var sectionsInModel = session.Sections.Count;
+
+                check(sectionsInModel, sectionsInDB, InconsistentModelException.ModelDBInconsistencyType.Sections);
+            }
+            catch(InconsistentModelException)
+            {
+                throw;
+            }
+            
+            void check(int model, int db, InconsistentModelException.ModelDBInconsistencyType type)
+            {
+                if (db > model)
+                    throw new InconsistentModelException(
+                        InconsistentModelException.ModelDBInconsistencyType.Sections,
+                        db,
+                        model);
+            }
         }
 
         public int CheckClientsAndGetNumber()

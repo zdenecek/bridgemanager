@@ -35,7 +35,7 @@ namespace BridgeManager.Source.ViewModel
             }
             catch(Exception e)
             {
-                Console.WriteLine("Cannot create scores, error: " + e.Message);
+                Console.WriteLine(Properties.Strings.scoring_create_scores_error + e.Message);
             }
             
         }

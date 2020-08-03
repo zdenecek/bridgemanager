@@ -8,14 +8,20 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="110"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
 
         <DataGrid Name="dgSessions"
                   ItemsSource="{Binding Sessions}"
-                  Style="{StaticResource DataGridStyle}">
+                  Style="{StaticResource DataGridStyle}"
+                  Grid.Column="1"
+                  Grid.ColumnSpan="2">
 
             <DataGrid.ContextMenu>
                 <ContextMenu>

@@ -42,11 +42,11 @@ namespace BridgeManager.Source.ViewModel
 
         public void RemoveSection(Section section) {
             if (section == null) {
-                Console.WriteLine("Remove section: No session selected.");
+                Console.WriteLine(Properties.Strings.sections_remove_section_no_section_selected);
                 return;
             }
             else if (!LoadedSession.Sections.Remove(section)) {
-                Console.WriteLine("Remove section: You can only edit loaded session.");
+                Console.WriteLine(Properties.Strings.sections_remove_section_couldnt_remove);
             }
             else {
                 foreach (Section s in from s in LoadedSession.Sections
@@ -59,11 +59,10 @@ namespace BridgeManager.Source.ViewModel
 
         public void AssignMovement(Section toSection) {
             if (toSection == null) {
-                Console.WriteLine("No section selected");
+                Console.WriteLine(Properties.Strings.sections_assign_movement_no_section_selected);
                 return;
             }
             Movement movement = dialogService.SelectMovement(MainViewModel.GetViewModel<MovementsViewModel>().Movements);
-            Console.WriteLine("Selected: " + movement);
             toSection.Movement = movement;
         }
     }

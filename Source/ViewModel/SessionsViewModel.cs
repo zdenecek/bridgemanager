@@ -42,13 +42,10 @@ namespace BridgeManager.Source.ViewModel
         public void RemoveSession(Session session) {
             var tournament = MainViewModel.LoadedTournament;
             if (session.Equals(MainViewModel.LoadedSession)) {
-                Console.WriteLine("Cannot remove loaded session");
+                Console.WriteLine(Properties.Strings.sessions_remove_sesssion_cannot_remove_loaded);
                 return;
             }
-            string success = "successful";
-            string fail = "failed";
-            string res = tournament.Sessions.Remove(session) ? success : fail;
-            Console.WriteLine($"Remove session: {res }");
+            tournament.Sessions.Remove(session);
         }
 
         public void AssignDatabaseFilepath(Session session) {

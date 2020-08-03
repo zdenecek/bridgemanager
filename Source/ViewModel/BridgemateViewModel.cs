@@ -4,6 +4,7 @@ using BridgeManager.Source.Views;
 using BridgeManager.Source.Services.Database;
 using System.Diagnostics;
 using BridgeManager.Source.Services.Dialog;
+using System.Data.OleDb;
 
 namespace BridgeManager.Source.ViewModel
 {
@@ -70,6 +71,10 @@ namespace BridgeManager.Source.ViewModel
             {
                 bcsService.RetrieveResults(MainViewModel.LoadedSession, MainViewModel.LoadedTournament);
                 Console.WriteLine(Properties.Strings.bridgemate_retrieve_results_success);
+            }
+            catch (OleDbException e)
+            {
+                Console.WriteLine(Properties.Strings.bridgemate_database_error + e.Message);
             }
             catch (InconsistentModelException e)
             {

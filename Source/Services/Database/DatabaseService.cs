@@ -31,13 +31,12 @@ namespace BridgeManager.Source.Services.Database {
 
             try
             {
-                Console.WriteLine("Connecting to a database:" + filePath);
                 connection.Open();
             }
 
-            catch (Exception e)
+            catch
             {
-                Console.WriteLine("Error opening database file, exception: " + e.Message);
+                throw;
             }
         }
 

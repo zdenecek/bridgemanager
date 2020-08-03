@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="bridgemate_database_error" xml:space="preserve">
+    <value>Error connecting to database:</value>
+  </data>
   <data name="bridgemate_retrieve_results" xml:space="preserve">
     <value>Retrieve results</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="bridgemate_title" xml:space="preserve">
     <value>BridgeMate</value>
+  </data>
+  <data name="exports_title" xml:space="preserve">
+    <value>Export</value>
   </data>
   <data name="movements-add_movement" xml:space="preserve">
     <value>Add a movement</value>
@@ -205,7 +211,7 @@
     <value>Players</value>
   </data>
   <data name="players_default_name" xml:space="preserve">
-    <value>?</value>
+    <value>unknown</value>
   </data>
   <data name="player_remove_pair_no_pair_selected" xml:space="preserve">
     <value>Cannot remove pair - no pair is selected!</value>
@@ -273,6 +279,9 @@
   <data name="scoring-title" xml:space="preserve">
     <value>Scores</value>
   </data>
+  <data name="scoring_create_scores_error" xml:space="preserve">
+    <value>Cannot create scores, error:</value>
+  </data>
   <data name="scoring_intermediate_results" xml:space="preserve">
     <value>Intermediate results</value>
   </data>
@@ -306,8 +315,17 @@
   <data name="sections_assign_movement" xml:space="preserve">
     <value>Assign movement</value>
   </data>
+  <data name="sections_assign_movement_no_section_selected" xml:space="preserve">
+    <value>Cannot assign movement  - no section is selected.</value>
+  </data>
   <data name="sections_remove_section" xml:space="preserve">
     <value>Remove section</value>
+  </data>
+  <data name="sections_remove_section_couldnt_remove" xml:space="preserve">
+    <value>Cannot remove section.</value>
+  </data>
+  <data name="sections_remove_section_no_section_selected" xml:space="preserve">
+    <value>Cannot remove section - no section is selected.</value>
   </data>
   <data name="sessions-table-name" xml:space="preserve">
     <value>Name</value>
@@ -329,6 +347,9 @@
   </data>
   <data name="sessions_remove_session" xml:space="preserve">
     <value>Remove session</value>
+  </data>
+  <data name="sessions_remove_sesssion_cannot_remove_loaded" xml:space="preserve">
+    <value>Cannot remove loaded session!</value>
   </data>
   <data name="sessions_table_database_file" xml:space="preserve">
     <value>Database file</value>
