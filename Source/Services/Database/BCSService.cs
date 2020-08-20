@@ -60,8 +60,9 @@ namespace BridgeManager.Source.Services.Database
                 row.ID = (short)s.Number;
                 row.Letter = s.Name;
                 row.Tables = (short)s.Movement.TableCount;
-                row.MissingPair = 0;
+                row.MissingPair = (short) (s.MissingPair?.Number ??  0);
                 row.Session = 1;
+                
 
                 row.EWMoveBeforePlay = 0;
                 row.ScoringType = 1;

@@ -8,6 +8,20 @@ using System.Threading.Tasks;
 namespace BridgeManager.Source.Model.Scoring {
     public class Score{
 
+        public static Score operator +(Score a, Score b)
+        {
+            if (a == null) return b;
+            if (b == null) return a;
+
+            return new Score()
+            {
+                PlayerUnit = a.PlayerUnit,
+                OpponentPlayerUnit = a.OpponentPlayerUnit,
+                MaxPoints = a.MaxPoints + b.MaxPoints,
+                Points = a.Points + b.Points
+            };
+        }
+
         public Result AsociatedResult { get; set; }
 
         public PlayerUnit PlayerUnit { get; set; }

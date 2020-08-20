@@ -14,7 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\zdnek\ME\Bridge\BridgeManager\build\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,10 +25,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>1</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -51,6 +53,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>BridgeManager.App</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>A476BEF844A4DB1412B5D558326D48D216937FEA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>BridgeManager_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Autofac, Version=5.2.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
@@ -116,6 +130,7 @@
     <Compile Include="Source\Services\Dialog\IDialogService.cs" />
     <Compile Include="Source\Services\Files\IFileService.cs" />
     <Compile Include="Source\Services\Scoring\IScoringService.cs" />
+    <Compile Include="Source\Services\Scoring\ScorersLoader.cs" />
     <Compile Include="Source\Services\Scoring\ScoringService.cs" />
     <Compile Include="Source\Services\Serialization\ISerializationService.cs" />
     <Compile Include="Source\Services\Movements\IMovementsService.cs" />
@@ -133,9 +148,9 @@
     <Compile Include="Source\Commands\Command.cs" />
     <Compile Include="Source\Commands\DelegateCommand.cs" />
     <Compile Include="Source\Utilities\SettingsLoader.cs" />
-    <Compile Include="Source\ViewModel\Dialog\Settings\SettingsWindowViewModel.cs" />
-    <Compile Include="Source\ViewModel\Dialog\Settings\SettingsCategory.cs" />
-    <Compile Include="Source\ViewModel\Dialog\Settings\SettingsItem.cs" />
+    <Compile Include="Source\ViewModel\Dialog\SettingsWindowViewModel.cs" />
+    <Compile Include="Source\Component\SettingsCategory.cs" />
+    <Compile Include="Source\Component\SettingsItem.cs" />
     <Compile Include="Source\ViewModel\ExportsViewModel.cs" />
     <Compile Include="Source\ViewModel\ResultsViewModel.cs" />
     <Compile Include="Source\ViewModel\TournamentViewModel.cs" />
@@ -282,7 +297,10 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Files\klub3.DAT" />
+    <None Include="BridgeManager_TemporaryKey.pfx" />
+    <None Include="Files\klub3.DAT">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Source\Services\Database\BMInput1DataSet.xsc">
       <DependentUpon>BMInput1DataSet.xsd</DependentUpon>
@@ -318,8 +336,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Source\Views\Dialog\Settings\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

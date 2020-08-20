@@ -12,6 +12,24 @@ namespace BridgeManager.Source.Services.Scoring
 {
     public class MPScorer : IScorer
     {
+        public void CreateCrossTable(Session session)
+        {
+            var sections = session.Sections.Count;
+            var crossTable = new Score[sections][,];
+
+            for(int i = 0; i < sections; i++)
+            {
+                var section = session.Sections.ElementAt(i);
+                var pairs =  section.PairCount;
+                var table = new Score[pairs, pairs];
+
+                foreach(Score score in session.IntermediateScores.Where(s => s.AsociatedResult.Section.Equals(section))){
+                    table[score.PlayerUnit.Number - 1, score.OpponentPlayerUnit.Number - 1] += score;
+                }
+
+                crossTable[i] = table;
+            }
+        }
 
         public void CreateIntermediateScores(Session session)
         {

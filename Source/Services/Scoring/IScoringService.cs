@@ -4,7 +4,8 @@ namespace BridgeManager.Source.Services.Scoring
 {
     public interface IScoringService
     {
-        void CreateIntermediateScores(Session session);
+        void CreateIntermediateSessionScores(Session session);
         void CreateSessionScores(Session session);
+        void CreateCrossTable(Session session);
     }       
 }

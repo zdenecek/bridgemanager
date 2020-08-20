@@ -295,6 +295,15 @@ namespace BridgeManager.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add a pausing pair.
+        /// </summary>
+        public static string players_add_pause_pair {
+            get {
+                return ResourceManager.GetString("players_add_pause_pair", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add a player.
         /// </summary>
         public static string players_add_player {

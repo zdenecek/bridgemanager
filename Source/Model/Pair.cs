@@ -13,34 +13,39 @@ namespace BridgeManager.Source.Model
 
         private Player _player2;
         private Player _player1;
-        
-        public Player Player1 { get => _player1; set => _player1 = value;   }
+        private string _name;
 
+        public Player Player1 { get => _player1; set => _player1 = value;   }
         public Player Player2 { get => _player2; set => _player2 = value; }
 
-        // [Persist(Ignore = true)]
-        //   public List<Player> Players { get => new List<Player> { Player1, Player2 }; }
+        public override string Name { 
+            get => _name ?? AsNames(); 
+            set { 
+                _name = value; 
+                OnPropertyChanged();
+            } 
+        }
 
-        public override string Name { get => Player1.Name + "-" + Player2.Name; }
+        public bool IsMissing { get; set; }
 
         public Pair(int number) : base(number) {
+            IsMissing = false;
         }
 
         public Pair() : this (0) {
+            //TODO does this have to be here? I think not.
             Player1 = new Player();
             Player2 = new Player();
         }
 
-        /*
-        public void ClearReference() {
-
-            this.Player1.Pair = null;
-            this.Player2.Pair = null;
-        }
-        */
         public override string ToString()
         {
             return $"Pair {Number}";
+        }
+
+        public string AsNames()
+        {
+            return Player1.Name + "-" + Player2.Name;
         }
 
     }

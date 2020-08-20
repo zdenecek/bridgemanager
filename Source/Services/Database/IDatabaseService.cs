@@ -4,9 +4,6 @@ namespace BridgeManager.Source.Services.Database
 {
     public interface IDatabaseService
     {
-        
-        
-
         void Open(string filePath);
 
         void Close();

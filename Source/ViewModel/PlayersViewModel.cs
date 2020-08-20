@@ -27,6 +27,7 @@ namespace BridgeManager.Source.ViewModel {
         public Command RemovePlayerCommand { get; private set; }
         public Command AddPairCommand { get; private set; }
         public Command RemovePairCommand { get; private set; }
+        public Command AddMissingPairCommand { get; private set; }
 
         public override string Header { get => Properties.Strings.players_title; }
 
@@ -38,6 +39,7 @@ namespace BridgeManager.Source.ViewModel {
             this.RemovePlayerCommand = new DelegateCommand<Player>(RemovePlayer);
             this.AddPairCommand = new DelegateCommand(() => AddPair());
             this.RemovePairCommand = new DelegateCommand<Pair>(RemovePair);
+            this.AddMissingPairCommand = new DelegateCommand(() => AddPausePair());
 
             MainViewModel.PropertyChanged += (s, a) => { OnPropertyChanged("Players"); OnPropertyChanged("Pairs"); };
         }
@@ -59,6 +61,8 @@ namespace BridgeManager.Source.ViewModel {
             tournament.Players.Add(player);
             return player;
         }
+
+   
 
         public void RemovePlayer(Player player) {
             
@@ -89,6 +93,21 @@ namespace BridgeManager.Source.ViewModel {
                 }
         }
 
+        public Pair AddPausePair()
+        {
+            var pair = AddPair();
+            pair.IsMissing = true;
+            //TODO Localize
+            pair.Player1.Name = "Pause";
+            pair.Player2.Name = "Pause";
+            pair.Name = "Pause";
+            foreach (var section in this.MainViewModel.LoadedSession.Sections )
+            {
+                section.MissingPair = pair;
+            }
+            return pair;
+        }
+
         public Pair AddPair() {
 
             if (IsLoaded == false)
@@ -109,6 +128,7 @@ namespace BridgeManager.Source.ViewModel {
 
             return pair;
         }
+
         public void RemovePair(Pair pair) {
 
             if (IsLoaded == false)

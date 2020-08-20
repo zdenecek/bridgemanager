@@ -24,21 +24,24 @@ namespace BridgeManager.Source.Services.Database {
     public class AdapterManager {
 
         private OleDbConnection connection;
+        private OleDbDataAdapter[] adapters;
 
         #region SchemaVariables
+        
         private string[] tableNames;
         private string[] tableNamesSafe;
         private string[][] columnNamesSafe;
         private string[][] columnNames;
         private OleDbType[][] columnTypes;
+        
         #endregion Schema
 
-        private OleDbDataAdapter[] adapters;
+        
 
         public AdapterManager(OleDbConnection connection) {
             SetSchema();
             this.connection = connection;
-            this.adapters = new OleDbDataAdapter[7];
+            this.adapters = new OleDbDataAdapter[Enum.GetNames(typeof(BMTable)).Count()];
         }
 
         /// <summary>
@@ -65,7 +68,7 @@ namespace BridgeManager.Source.Services.Database {
         /// <returns></returns>
         public OleDbDataAdapter GetAdapter(BMTable table) {
             if (adapters[(int)table] == null) ConstructAdapter(table);
-                return adapters[(int)table];
+            return adapters[(int)table];
         }
 
         private void ConstructAdapter(BMTable table) {
@@ -97,6 +100,18 @@ namespace BridgeManager.Source.Services.Database {
             }
 
             adapters[(int)table] = adapter;
+
+            void SetParams(int DBTable, OleDbCommand cmd)
+            {
+                for (int i = 0; i < columnNames[DBTable].Length; i++)
+                {
+                    var parameter = cmd.Parameters.Add("@" + columnNames[DBTable][i], columnTypes[DBTable][i]);
+                    parameter.SourceColumn = columnNames[DBTable][i];
+                    parameter.IsNullable = false;
+                }
+            }
+
+            
         }
 
         /// <summary>
@@ -153,13 +168,5 @@ namespace BridgeManager.Source.Services.Database {
 
         }
 
-        private void SetParams(int table, OleDbCommand cmd) {
-            for (int i = 0; i < columnNames[table].Length; i++) {
-                var parameter = cmd.Parameters.Add("@" + columnNames[table][i], columnTypes[table][i]);
-                parameter.SourceColumn = columnNames[table][i];
-                parameter.IsNullable = false;
-            }  
-        }
-        
     }
 }

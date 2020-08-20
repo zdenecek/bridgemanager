@@ -210,6 +210,9 @@
   <data name="players-title" xml:space="preserve">
     <value>Players</value>
   </data>
+  <data name="players_add_pause_pair" xml:space="preserve">
+    <value>Add a pausing pair</value>
+  </data>
   <data name="players_default_name" xml:space="preserve">
     <value>unknown</value>
   </data>

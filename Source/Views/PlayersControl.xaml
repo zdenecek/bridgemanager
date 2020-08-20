@@ -43,6 +43,7 @@
                                                          Path=PlacementTarget.SelectedItem}"/>
                     <MenuItem  Header="{Binding Source={StaticResource Strings}, Path=players_add_player}" 
                               Command="{Binding AddPlayerCommand}"/>
+                 
                 </ContextMenu>
             </DataGrid.ContextMenu>
         </DataGrid>
@@ -81,6 +82,8 @@
                                                          Path=PlacementTarget.SelectedItem}"/>
                     <MenuItem  Header="{Binding Source={StaticResource Strings}, Path=players_add_pair}"
                               Command="{Binding AddPairCommand}"/>
+                    <MenuItem  Header="{Binding Source={StaticResource Strings}, Path=players_add_pause_pair}"
+                              Command="{Binding AddMissingPairCommand}"/>
 
                 </ContextMenu>
             </DataGrid.ContextMenu>

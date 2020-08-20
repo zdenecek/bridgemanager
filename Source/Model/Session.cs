@@ -22,8 +22,14 @@ namespace BridgeManager.Source.Model
 
         public ObservableCollection<Result> Results { get; set; }
         public ObservableCollection<Result> IntermediateResults { get; set; }
+
         public ObservableCollection<Score> IntermediateScores { get; set; }
         public ObservableCollection<Score> FinalScores { get; set; }
+        /// <summary>
+        /// First index denotes the section
+        /// Second and first indeces denote the unit number
+        /// </summary>
+        public Score[][,] CrossTable { get; set; }
 
         public Session(int number) : base(number) {
             this.Name = "Section " + Number;

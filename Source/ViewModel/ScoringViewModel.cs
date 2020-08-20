@@ -14,9 +14,6 @@ namespace BridgeManager.Source.ViewModel
       
         public Command CreateScoresCommand { get; private set; }
 
-        public ObservableCollection<Score> PartialScores { get => MainViewModel.LoadedSession?.IntermediateScores; }
-
-        public ObservableCollection<Score> Scores { get => MainViewModel.LoadedSession?.FinalScores; }
         public override string Header { get => Properties.Strings.scoring_title; }
 
         public ScoringViewModel(MainWindowViewModel mainController, IScoringService scoringService) : base(mainController) {
@@ -30,19 +27,13 @@ namespace BridgeManager.Source.ViewModel
         {
             try
             {
-                scoringService.CreateIntermediateScores(MainViewModel.LoadedSession);
+                scoringService.CreateIntermediateSessionScores(MainViewModel.LoadedSession);
                 scoringService.CreateSessionScores(MainViewModel.LoadedSession);
             }
             catch(Exception e)
             {
                 Console.WriteLine(Properties.Strings.scoring_create_scores_error + e.Message);
             }
-            
         }
-
-       
-
-               
-
     }
 }

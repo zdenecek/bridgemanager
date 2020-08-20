@@ -17,7 +17,19 @@ namespace BridgeManager.Source.Services.Scoring
             scorer = new MPScorer();
         }
 
-        public void CreateIntermediateScores(Session session)
+        public void CreateCrossTable(Session session)
+        {
+            try
+            {
+                scorer.CreateCrossTable(session);
+            }
+            catch (InvalidOperationException)
+            {
+                throw;
+            }
+        }
+
+        public void CreateIntermediateSessionScores(Session session)
         {
             try
             {

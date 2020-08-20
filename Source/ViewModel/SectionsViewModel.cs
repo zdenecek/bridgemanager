@@ -24,9 +24,9 @@ namespace BridgeManager.Source.ViewModel
         public SectionsViewModel(
             MainWindowViewModel mainWindowViewModel,
             IDialogService dialogService) : base(mainWindowViewModel) {
+                        
             _view = new SectionsControl();
           
-
             this.dialogService = dialogService;
 
             this.AddSectionCommand = new DelegateCommand(() => AddSection());
@@ -37,7 +37,13 @@ namespace BridgeManager.Source.ViewModel
         public Section AddSection() {
             Section section = new Section(LoadedSession.Sections.Count + 1);
             LoadedSession?.Sections.Add(section);
+            SetMissingPair(section);
             return section;
+        }
+
+        private void SetMissingPair(Section section)
+        {
+            section.MissingPair = MainViewModel.LoadedTournament.Pairs.FirstOrDefault(pair => pair.IsMissing == true);
         }
 
         public void RemoveSection(Section section) {
